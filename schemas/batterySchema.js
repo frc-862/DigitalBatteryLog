@@ -13,6 +13,7 @@ batteryDataSchema = new Schema({
         soc: Number,
     },
     purpose: String,
+    subgroup: String,
     updated: Boolean,
     row: Number,
     signedOut: Boolean,

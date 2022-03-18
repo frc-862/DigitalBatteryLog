@@ -28,8 +28,16 @@ async function checkDb() {
         }
         values[0] = `${res[updated].batteryNumber}`;
         values[1] = `${res[updated].timeOut}`;
-        values[2] = `${res[updated].beakBefore.rint}`;
-        values[3] = `${res[updated].beakBefore.soc}`;
+        if (res[updated].beakBefore.rint == undefined) {
+            values[2] = null;
+        } else {
+            values[2] = `${res[updated].beakBefore.rint}`;
+        }
+        if (res[updated].beakBefore.soc == undefined) {
+            values[3] = null;
+        } else {
+            values[3] = `${res[updated].beakBefore.soc}`;
+        }
         if (res[updated].timeIn == undefined) {
             values[4] = null;
         } else {
@@ -48,8 +56,16 @@ async function checkDb() {
             values[6] = `${res[updated].beakAfter.soc}`;
         }
 
-        values[7] = `${res[updated].purpose}`;
-
+        if (res[updated].purpose == undefined) {
+            values[7] = null;
+        } else {
+            values[7] = `${res[updated].purpose}`;
+        }
+        if (res[updated].subgroup == undefined) {
+            values[8] = null;
+        } else {
+            values[8] = `${res[updated].purpose}`;
+        }
         finalVals.push(values);
     }
     update(finalVals, finalDocs, finalRows);
@@ -121,34 +137,34 @@ async function writeData(auth, values, document, row) {
     const spreadsheetId = SHEET_URL.slice(39, 83)
     const sheets = google.sheets({ version: 'v4', auth });
     for (let vals in values) {
-        const res = await sheets.spreadsheets.values.get({ spreadsheetId: spreadsheetId, range: 'A2:H' })
-            let nextOpenRow;
-            if (res.data.values == undefined) {
-                nextOpenRow = 2;
-            } else {
-                nextOpenRow = res.data.values.length + 2
-            }
-            let range;
-            if (row[vals] == null) {
-                range = `Sheet1!A${nextOpenRow}:H`
-                document[vals].row = nextOpenRow;
-            } else {
-                range = `Sheet1!A${row}:H`
-            }
-            const resource = {
-                "majorDimension": 'ROWS',
-                "values": [values[vals]],
-            };
-            await sheets.spreadsheets.values.update({
-                spreadsheetId: spreadsheetId,
-                range: range,
-                valueInputOption: 'RAW',
-                resource,
-            }).then((result) => {
-                    console.log('%d cells updated.', result.updatedCells);
-                    document[vals].updated = true;
-                    document[vals].save();
-            }).catch((err) => console.log(err));
+        const res = await sheets.spreadsheets.values.get({ spreadsheetId: spreadsheetId, range: 'A2:I' })
+        let nextOpenRow;
+        if (res.data.values == undefined) {
+            nextOpenRow = 2;
+        } else {
+            nextOpenRow = res.data.values.length + 2
+        }
+        let range;
+        if (row[vals] == null) {
+            range = `Sheet1!A${nextOpenRow}:I`
+            document[vals].row = nextOpenRow;
+        } else {
+            range = `Sheet1!A${row}:I`
+        }
+        const resource = {
+            "majorDimension": 'ROWS',
+            "values": [values[vals]],
+        };
+        await sheets.spreadsheets.values.update({
+            spreadsheetId: spreadsheetId,
+            range: range,
+            valueInputOption: 'RAW',
+            resource,
+        }).then((result) => {
+            console.log('%d cells updated.', result.updatedCells);
+            document[vals].updated = true;
+            document[vals].save();
+        }).catch((err) => console.log(err));
         console.log('doc #', vals)
     }
 }
