@@ -46,7 +46,7 @@ sudo apt install npm
 git clone git@github.com:Mikecerc/BatteryLogSheetsUpdater.git
 ```
 
-> For HTMl: 
+> For HTTPS: 
 ```
 git clone https://github.com/Mikecerc/BatteryLogSheetsUpdater.git
 ```
