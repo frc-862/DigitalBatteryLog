@@ -1,16 +1,15 @@
 const fs = require('fs');
 const readline = require('readline');
 const { google } = require('googleapis');
-const batteryDataModel = require('./schemas/batterySchema.js')
+const batteryDataModel = require('../schemas/batterySchema.js');
+const { scopes, sheetURL } = require('../../config/constants/googleAPIConstants.json');
 
-// If modifying these scopes, delete token.json.
-const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
+// If modifying scopes, delete token.json.
 // The file token.json stores the user's access and refresh tokens, and is
 // created automatically when the authorization flow completes for the first
 // time.
-const TOKEN_PATH = './auth/token.json';
-const CREDENTIALS_PATH = './auth/credentials.json'
-const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1SX7XJvakIZy1HRAKwPCJXn5hu9fjtQ1SoHH57GadeV0/edit#gid=0'
+const TOKEN_PATH = './config/auth/token.json';
+const CREDENTIALS_PATH = './config/auth/credentials.json'
 
 async function checkDb() {
     const res = await batteryDataModel.find({ updated: false })
@@ -108,7 +107,7 @@ async function authorize(credentials, callback, values, document, row) {
 function getNewToken(oAuth2Client, callback, values, document, row) {
     const authUrl = oAuth2Client.generateAuthUrl({
         access_type: 'offline',
-        scope: SCOPES,
+        scope: scopes,
     });
     console.log('Authorize this app by visiting this url:', authUrl);
     const rl = readline.createInterface({
@@ -134,7 +133,7 @@ function getNewToken(oAuth2Client, callback, values, document, row) {
  * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
  */
 async function writeData(auth, values, document, row) {
-    const spreadsheetId = SHEET_URL.slice(39, 83)
+    const spreadsheetId = sheetURL.slice(39, 83)
     const sheets = google.sheets({ version: 'v4', auth });
     for (let vals in values) {
         const res = await sheets.spreadsheets.values.get({ spreadsheetId: spreadsheetId, range: 'A2:I' })

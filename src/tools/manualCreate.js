@@ -3,8 +3,8 @@
 
 const mongoose = require('mongoose');
 const readline = require('readline');
-const { databaseAddress } = require('../auth/temp-externalDBAddress.json');
-const batteryDataModel = require("../schemas/batterySchema");
+const { databaseAddress } = require('../../config/constants/mongoDBConstants.json');
+const batteryDataModel = require("../schemas/batterySchema.js");
 
 try {
     mongoose.connect(databaseAddress).then(() => { console.log('connected'); createDocument(); });
@@ -82,6 +82,7 @@ async function createDocument() {
                             data.beakAfter.rint = rNum;
                             data.beakAfter.soc = socNum;
                             data.updated = false; 
+                            data.signedOut = false;
                             data.save();
                             rl.question('would you like to add another battery log?\ntype Y to accept or any other key to deny', (res) => {
                                 if (res.toLowerCase() != 'y') {
