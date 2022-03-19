@@ -51,7 +51,7 @@ sudo ./install.sh
     1. Using internet explorer, navigate to the [Google Cloud Platform]('https://console.cloud.google.com')
     2. agree to the terms of service and continue onto the main dashboard.
     3. click on `IAM & Admin`
-    !(https://github.com/mikecerc/DigitalBatteryLog)
+    https://github.com/Mikecerc/DigitalBatteryLog/blob/readme-dev/.github/images/IAM-sc.png?raw=true
     4. Click "create a project"
     5. 
 
