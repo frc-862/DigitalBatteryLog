@@ -34,12 +34,12 @@ Hello! The purpose of this program is to digitally log Battery sign-outs, includ
 * Note: These instructions are specifically for a raspberry pi running a plain raspbian install. If you are using another computer or a different distribution of linux, these steps may not be exactly the same.
 * First clone the repository with the following commands:
 
-> For SSH: 
+ For SSH: 
 ```
 git clone git@github.com:Mikecerc/DigitalBatteryLog.git
 ```
 
-> For HTTPS: 
+ For HTTPS: 
 ```
 git clone https://github.com/Mikecerc/DigitalBatteryLog.git
 ```
@@ -80,9 +80,11 @@ sudo ./install.sh
     ![](https://github.com/Mikecerc/DigitalBatteryLog/blob/readme-dev/.github/images/OAuth.png?raw=true)
     17. The final tab should be labeled `Credentials`. Click the download button. Move the JSON file you downloaded into `[REPOSITORY-FOLDER]/config/auth` and rename the file to `credentials.json`. 
     18. Return to the `API & Services Tab` and navigate to the `OAuth consent screen` tab. <br>
-    ![]()
-    19. Scroll down until you see the section labeled `Test Users`. Click the `Add Users` Button
-    20. add the email you will be using to edit your sheets. <br> 
+    ![](https://github.com/Mikecerc/DigitalBatteryLog/blob/readme-dev/.github/images/oauthconsent.png?raw=true)
+    19. Scroll down until you see the section labeled `Test Users`. Click the `Add Users` Button <br>
+    ![](https://github.com/Mikecerc/DigitalBatteryLog/blob/readme-dev/.github/images/testuser.png?raw=true)
+    20. add the email you will be using to edit your sheets <br> 
+    ![](https://github.com/Mikecerc/DigitalBatteryLog/blob/readme-dev/.github/images/addUser.png?raw=true)
     > WARNING: The email address you enter MUST have edit permissions on the Google Sheets you are editing.
     21. You may now close your internet explorer browser.
     
