@@ -44,6 +44,7 @@ else
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 fi 
 
+# checks if nodejs is installed, then installs it if not (with nvm)
 nodeVersion=$(node --version)
 if [[ ! $nodeVersion == "v16.14.2" ]]; then
     echo "node is not installed"
