@@ -45,7 +45,7 @@ git clone https://github.com/Mikecerc/DigitalBatteryLog.git
 ```
 * To install all dependencies and create all json files, run the following to run the install script and follow any prompts given
 ```bash
-sudo ./install.sh
+sudo bash ./install.sh
 ```
 * Next, you must create an app via Google Cloud Platform. Follow the steps below to successfully setup the application, Oauth2 and Google Sheets API
     1. Using internet explorer, navigate to the [Google Cloud Platform](https://console.cloud.google.com)
