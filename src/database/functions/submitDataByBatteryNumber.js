@@ -1,4 +1,4 @@
-const batteryDataModel = require("../../schemas/batterySchema");
+const batteryDataModel = require("../../schemas/batterySchema.js");
 
 //please pass null in if there is no data for that category. 
 async function submitDataByBatteryNumber(bNum, rintBefore, socBefore, rintAfter, socAfter, purpose, subgroup) {
