@@ -3,13 +3,16 @@ const batteryDataModel = require('../../schemas/batterySchema.js')
 async function getSignedInLogs() {
 
 const currentTime = Date.now()
+//gets all singed In documents
 const res = await batteryDataModel.find({ signedOut: false });
 let finalDocs = [];
+//for every battery signed in, add it to the final values list ONLY if its only been signed back in for under 2 hours
 for (let doc in res) {
     if (currentTime - Date.parse(res[doc].timeIn) >= 7200000 ) {
         finalDocs.push(res[doc])
     }
 }
+//returns an array of all docs that meet this requirement. 
 return finalDocs; 
 }
 module.exports = getSignedInLogs;

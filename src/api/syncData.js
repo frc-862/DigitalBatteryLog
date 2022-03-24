@@ -4,14 +4,18 @@ const { sheetURL } = require('../../config/constants/googleAPIConstants.json');
 const TOKEN_PATH = './config/auth/token.json';
 const CREDENTIALS_PATH = './config/auth/credentials.json'
 const { google } = require('googleapis');
+const getNewToken = require('./getToken.js');
 
+//primary function for checking db updates 
 async function checkDb() {
+    //searches db for unsynced data
     const res = await batteryDataModel.find({ updated: false })
+    //final array of values sent to write function
     let finalVals = [];
     let finalDocs = [];
     let finalRows = [];
     for (let updated in res) {
-        console.log(res[updated])
+        //formats all data from the doc being updated for the sheets API. 
         let values = [];
         finalDocs.push(res[updated]);
         if (res[updated].row == undefined) {
@@ -87,27 +91,35 @@ async function authorize(credentials, callback, values, document, row) {
     // Check if we have previously stored a token.
     fs.readFile(TOKEN_PATH, (err, token) => {
         if (err) {
-            console.error('ERROR: No Token. Please run getToken.js')
-            return process.kill()
-        }
+            //if there is no token.json file, return an error and kill the program
+                        console.error('Cannot find token, please run getNewToken.js');
+                        return process.kill();
+        } else {
         oAuth2Client.setCredentials(JSON.parse(token));
         callback(oAuth2Client, values, document, row);
+        }
     });
 }
 /**
  * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
  */
 async function writeData(auth, values, document, row) {
+    //obtains the spreadsheet ID from the URL
     const spreadsheetId = sheetURL.slice(39, 83)
+    //sheets object
     const sheets = google.sheets({ version: 'v4', auth });
     for (let vals in values) {
+        //reads spreadsheet
         const res = await sheets.spreadsheets.values.get({ spreadsheetId: spreadsheetId, range: 'A2:I' })
+        //determines the next blank row
         let nextOpenRow;
         if (res.data.values == undefined) {
             nextOpenRow = 2;
         } else {
             nextOpenRow = res.data.values.length + 2
         }
+        // if a row is defined already in the document, update that row, 
+        //otherwise use the next open row and add its number to the document.
         let range;
         if (row[vals] == null) {
             range = `Sheet1!A${nextOpenRow}:I`
@@ -119,6 +131,7 @@ async function writeData(auth, values, document, row) {
             "majorDimension": 'ROWS',
             "values": [values[vals]],
         };
+        //updates sheet with all the new values 
         await sheets.spreadsheets.values.update({
             spreadsheetId: spreadsheetId,
             range: range,
