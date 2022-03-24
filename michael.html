@@ -1,0 +1,154 @@
+<head>
+    <link rel="stylesheet" href="./icofont/icofont.min.css">
+    <style>
+        *{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body{
+            background-color: #000044;
+        }
+        .button{
+            
+            background-color: white;
+            
+            border: none;
+            font-size: 8vw;
+            margin:5px;
+            transition: all .25s ease-in-out;
+        }
+
+        .container{
+            
+            background-color: white;
+            
+            border: none;
+            font-size: 8vw;
+            margin:5px;
+            transition: all .25s ease-in-out;
+        }
+        .container:focus{
+            background-color: #ddddff;
+        }
+
+        .choice{
+            width:90vw;
+            height:20vh;
+            border-radius: 6vw;
+        }
+        .choice-2col{
+            width:43vw;
+            height:20vh;
+            border-radius: 6vw;
+        }
+        .number{
+            border-radius: 20%;
+            width: 20vw;
+            height: 16vh;
+        }
+        .button:focus{
+            background-color: #6666dd;
+            color:white
+        }
+        .menu{
+            transition: .5s all ease-in-out;
+        }
+        
+    </style>
+</head>
+<body style="text-align: center;overflow:hidden">
+    <div id="menu_main" style="margin:10px;display:inline-block;" class="menu">
+        <span style="color:white;font-size:6vh;margin:3vw;display:block;font-weight:600">Battery Manager</span>
+        
+        <div>
+            <input type="button" value="Sign In" class="button choice-2col menuchange" style="display: inline-block;margin:1vw" data-menuto="signin">
+            <input type="button" value="Sign Out" class="button choice-2col menuchange" style="display: inline-block;margin:1vw" data-menuto="signout">
+        </div>
+        
+        
+        <input type="button" value="Logs" class="button choice menuchange" style="display: block;margin:3vw" data-menuto="logs">
+        <input type="button" value="Settings" class="button choice menuchange" style="display: block;margin:3vw" data-menuto="settings">
+    </div>
+    <div id="menu_logs" style="margin:10px;display:none;" class="menu">
+        <span style="color:white;font-size:6vh;margin:3vw;display:block;font-weight:600">Logs</span>
+        <div style="display: block;margin:3vw" class="container">
+
+        </div>
+        <input type="button" value="Logs" class="button choice menuchange" style="display: block;margin:3vw" data-menuto="logs">
+        <input type="button" value="Settings" class="button choice menuchange" style="display: block;margin:3vw" data-menuto="settings">
+    </div>
+    <div id="menu_signin" style="margin:10px;display:none;opacity:0%" class="menu">
+        <span id="result" style="color:white;font-size:6vh;margin:3vw;display:block;font-weight:600;opacity:0.6">Enter a Number</span>
+        <br/>
+        <input type="button" value="1" class="button a number" style="display: inline-block;">
+        <input type="button" value="2" class="button a number" style="display: inline-block;">
+        <input type="button" value="3" class="button a number" style="display: inline-block;">
+        <br/>
+        <input type="button" value="4" class="button a number" style="display: inline-block;">
+        <input type="button" value="5" class="button a number" style="display: inline-block;">
+        <input type="button" value="6" class="button a number" style="display: inline-block;">
+        <br/>
+        <input type="button" value="7" class="button a number" style="display: inline-block;">
+        <input type="button" value="8" class="button a number" style="display: inline-block;">
+        <input type="button" value="9" class="button a number" style="display: inline-block;">
+        <br/>
+        <button id="clear" class="button a number" style="display: inline-block;"><i class="icofont-close" style="font-size:7.5vh"></i></button>
+        <input type="button" value="0" class="button a number" style="display: inline-block;">
+        <button class="button a number" style="display: inline-block;"><i class="icofont-check" style="font-size:7.5vh"></i></button>
+
+    </div>
+    
+    <script>
+
+        
+        var menu = "main";
+
+        var final = "";
+        Array.from(document.getElementsByClassName("a")).forEach(function(button){
+            button.addEventListener("click", function(){
+                if(document.getElementById("result").innerHTML == "Enter a Number"){
+                    final = "";
+                }
+                if(final.length >= 4){
+                    final = "";
+                }
+                final += button.value;
+                document.getElementById("result").style.opacity = "1";
+                document.getElementById("result").innerHTML = final;
+            });
+        });
+
+        document.getElementById("clear").addEventListener("click", function(){
+            if(final == ""){
+                document.getElementById("menu_"+menu).style.opacity = "0";
+                setTimeout(function(){
+                    document.getElementById("menu_"+menu).style.display = "none";
+                    menu = "main";
+                    document.getElementById("menu_"+menu).style.display = "inline-block";
+                    setTimeout(function(){
+                        document.getElementById("menu_"+menu).style.opacity = "1";
+                    },20);
+                },500);
+            }
+            final = "";
+            document.getElementById("result").style.opacity = ".6";
+            document.getElementById("result").innerHTML = "Enter a Number";
+        });
+
+        Array.from(document.getElementsByClassName("menuchange")).forEach(function(button){
+            button.addEventListener("click", function(){
+                document.getElementById("menu_"+menu).style.opacity = "0";
+                setTimeout(function(){
+                    document.getElementById("menu_"+menu).style.display = "none";
+                    menu = button.dataset.menuto;
+                    document.getElementById("menu_"+menu).style.display = "inline-block";
+                    setTimeout(function(){
+                        document.getElementById("menu_"+menu).style.opacity = "1";
+                    },20);
+                },500);
+                
+                
+            });
+        });
+
+    </script>
+</body>
