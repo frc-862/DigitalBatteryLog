@@ -1,15 +1,14 @@
 const checkDb = require('./syncData.js');
 const cron = require('node-cron');
 const dns = require('dns');
-const { syncIntervalMinutes } = require('../../config/constants/constants.json')
 
 //function run by index.js for syncing database with google sheets
 async function runSync() {
     //checking syncIntervalMinutes in constants.json and insures its an integer
-    if (!(Number.isInteger(parseInt(syncIntervalMinutes)))) return console.error('ERROR! syncIntervalMinutes is not an integer');
+    if (!(Number.isInteger(parseInt(process.env.syncInterval)))) return console.error('ERROR! syncInterval is not an integer');
 
     //node-cron schedule for running sync at interval of your choice
-    cron.schedule(`*/${syncIntervalMinutes} * * * *`, () => {
+    cron.schedule(`*/${process.env.syncInterval} * * * *`, () => {
         //check if there is an internet connection. 
         checkInternet(function(isConnected) {
             if (isConnected) {

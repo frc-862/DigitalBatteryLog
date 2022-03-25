@@ -3,11 +3,11 @@
 
 const mongoose = require('mongoose');
 const readline = require('readline');
-const { databaseAddress } = require('../../config/constants/mongoDBConstants.json');
 const batteryDataModel = require("../schemas/batterySchema.js");
+require('dotenv').config()
 
 try {
-    mongoose.connect(databaseAddress).then(() => { console.log('connected'); createDocument(); });
+    mongoose.connect(process.env.databaseAddress).then(() => { console.log('connected'); createDocument(); });
 } catch (err) {
     if (err) console.error(err);
 }

@@ -1,10 +1,8 @@
 const fs = require('fs');
 const batteryDataModel = require('../schemas/batterySchema.js');
-const { sheetURL } = require('../../config/constants/googleAPIConstants.json');
 const TOKEN_PATH = './config/auth/token.json';
 const CREDENTIALS_PATH = './config/auth/credentials.json'
 const { google } = require('googleapis');
-const getNewToken = require('./getToken.js');
 
 //primary function for checking db updates 
 async function checkDb() {
@@ -105,7 +103,7 @@ async function authorize(credentials, callback, values, document, row) {
  */
 async function writeData(auth, values, document, row) {
     //obtains the spreadsheet ID from the URL
-    const spreadsheetId = sheetURL.slice(39, 83)
+    const spreadsheetId = process.env.sheetURL.slice(39, 83)
     //sheets object
     const sheets = google.sheets({ version: 'v4', auth });
     for (let vals in values) {

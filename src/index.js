@@ -1,5 +1,6 @@
 const runSync = require('./api/runSync.js');
 const connect = require('./database/connect.js');
+require('dotenv').config();
 
 //connects computer to mongoDB database
 try {

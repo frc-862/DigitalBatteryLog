@@ -9,30 +9,23 @@ fi
 mkdir -p "config/constants"
 mkdir -p "config/auth"
 
-# checks if constants.json exists. If it doesn't, then prompts user for contents and creates one
-if [[ ! -f "config/constants/constants.json" ]]; then   
-    echo "constants.json does not exist, creating it now"
+# checks if .env exists. If it doesn't, then prompts user for contents and creates one
+if [[ ! -f ".env" ]]; then   
+    echo ".env does not exist, creating it now"
     echo "In minutes how often do you want to sync data with google sheets?"
     echo "Please enter an integer"
     read -r syncTime
-    touch "config/constants/constants.json"
-    echo "{ \"SyncIntervalMinutes\": $syncTime }" > "config/constants/constants.json"
-fi
-
-# checks if googleAPIConstants.json exists. If it doesn't, then prompts user for contents and creates one
-if [[ ! -f "config/constants/googleAPIConstants.json" ]]; then   
-    echo "googleAPIConstants.json does not exist, creating it now"
+    echo "# the interval at which the program will attempt to sync any database changes to google sheets." > ".env"
+    echo "syncInterval=$syncTime " > ".env"
     echo "please enter the link to the google sheets you are logging your data in"
     read -r sheetLink
-    touch "config/constants/googleAPIConstants.json"
-    echo "{ \"scopes\": [\"https://www.googleapis.com/auth/spreadsheets\"], \"sheetURL\": \"$sheetLink\" }" > "config/constants/googleAPIConstants.json"
-fi
+    echo "#full url of the google sheet you are logging data on"> ".env"
+    echo "sheetURL=$sheetLink" > ".env"
+    echo "#mongoDB Database address"
+    echo "databaseAddress=mongodb://localhost:27017/test" > ".env"
+    echo "#permissions for google OAuth2" > ".env"
+    echo "scopes=[\"https://www.googleapis.com/auth/spreadsheets\"]" > ".env"
 
-# checks if mongoDBConstants.json exists. If it doesn't, then prompts user for contents and creates one
-if [[ ! -f "config/constants/mongoDBConstants.json" ]]; then 
-    echo "mongoDBConstants.json does not exist, creating it now"
-    touch "config/constants/mongoDBConstants.json"
-    echo "{ \"databaseAddress\": \"mongodb://localhost:27017/test\" }" > "config/constants/mongoDBConstants.json"
 fi
 
 # checks if nvm is installed, then installs it if it is not. 
@@ -52,4 +45,5 @@ else
     nvm install node v16.14.2
 fi 
 
-
+#installs npm dependencies 
+npm install

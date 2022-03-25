@@ -2,7 +2,7 @@
 const readline = require('readline');
 const fs = require('fs');
 const { google } = require('googleapis');
-const { scopes } = require('../../config/constants/googleAPIConstants.json')
+require('dotenv').config()
 
 //file paths for the token and credentials
 const TOKEN_PATH = './config/auth/token.json';
@@ -25,7 +25,7 @@ async function getNewToken() {
         //creates an OAuth2 url 
         const authUrl = oAuth2Client.generateAuthUrl({
             access_type: 'offline',
-            scope: scopes,
+            scope: process.env.scopes,
         });
 
         // prompts the user to visit the auth url 
