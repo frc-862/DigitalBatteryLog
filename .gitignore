@@ -1,6 +1,4 @@
 config/auth/credentials.json
 config/auth/token.json
-config/constants/constants.json
-config/constants/googleAPIConstants.json
-config/constants/mongoDBConstants.json
 node_modules
+.env
