@@ -179,46 +179,62 @@
         <span id="resultIn" style="color:white;font-size:6vh;margin:3vw;display:block;font-weight:600;opacity:0.6">Enter a Number</span>
         <br/>
         <input type="button" value="7" class="button a number" style="display: inline-block;" data-num="7">
-        <input type="button" value="8" class="button a number" style="display: inline-block;" data-num="8">
-        <input type="button" value="9" class="button a number" style="display: inline-block;" data-num="9">
-        <br/>
-        <input type="button" value="4" class="button a number" style="display: inline-block;" data-num="4">
-        <input type="button" value="5" class="button a number" style="display: inline-block;" data-num="5">
-        <input type="button" value="6" class="button a number" style="display: inline-block;" data-num="6">
-        <br/>
-        <input type="button" value="1" class="button a number" style="display: inline-block;" data-num="1">
-        <input type="button" value="2" class="button a number" style="display: inline-block;" data-num="2">
-        <input type="button" value="3" class="button a number" style="display: inline-block;" data-num="3">
-        <br/>
-        <button id="clearIn" class="button a number" style="display: inline-block;" data-num="/"><i class="icofont-close" style="font-size:7.5vh"></i></button>
-        <input type="button" value="0" class="button a number" style="display: inline-block;" data-num="0">
-        <button class="button a number" style="display: inline-block;" data-num="Enter"><i class="icofont-check" style="font-size:7.5vh"></i></button>
-        <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Pick Numbers 0-9</span>
-        <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Press SLASH to exit</span>
-        <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Press ENTER to continue</span>
+            <input type="button" value="8" class="button a number" style="display: inline-block;" data-num="8">
+            <input type="button" value="9" class="button a number" style="display: inline-block;" data-num="9">
+            <br/>
+            <input type="button" value="4" class="button a number" style="display: inline-block;" data-num="4">
+            <input type="button" value="5" class="button a number" style="display: inline-block;" data-num="5">
+            <input type="button" value="6" class="button a number" style="display: inline-block;" data-num="6">
+            <br/>
+            <input type="button" value="1" class="button a number" style="display: inline-block;" data-num="1">
+            <input type="button" value="2" class="button a number" style="display: inline-block;" data-num="2">
+            <input type="button" value="3" class="button a number" style="display: inline-block;" data-num="3">
+            <br/>
+            <button id="clearIn" class="button a number" style="display: inline-block;" data-num="/"><i class="icofont-close" style="font-size:7.5vh"></i></button>
+            <input type="button" value="0" class="button a number" style="display: inline-block;" data-num="0">
+            <button class="button number nextstep" style="display: inline-block;" data-num="Enter"><i class="icofont-check" style="font-size:7.5vh"></i></button>
+            <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Pick Numbers 0-9</span>
+            <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Press SLASH to exit</span>
+            <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Press ENTER to continue</span>
+        
 
     </div>
     <div id="menu_signout" style="margin:10px;display:none;opacity:0%" class="menu">
-        <span id="resultOut" style="color:white;font-size:6vh;margin:3vw;display:block;font-weight:600;opacity:0.6">Enter a Number</span>
-        <br/>
-        <input type="button" value="7" class="button a number" style="display: inline-block;" data-num="7">
-        <input type="button" value="8" class="button a number" style="display: inline-block;" data-num="8">
-        <input type="button" value="9" class="button a number" style="display: inline-block;" data-num="9">
-        <br/>
-        <input type="button" value="4" class="button a number" style="display: inline-block;" data-num="4">
-        <input type="button" value="5" class="button a number" style="display: inline-block;" data-num="5">
-        <input type="button" value="6" class="button a number" style="display: inline-block;" data-num="6">
-        <br/>
-        <input type="button" value="1" class="button a number" style="display: inline-block;" data-num="1">
-        <input type="button" value="2" class="button a number" style="display: inline-block;" data-num="2">
-        <input type="button" value="3" class="button a number" style="display: inline-block;" data-num="3">
-        <br/>
-        <button id="clearOut" class="button a number" style="display: inline-block;" data-num="/"><i class="icofont-close" style="font-size:7.5vh"></i></button>
-        <input type="button" value="0" class="button a number" style="display: inline-block;" data-num="0">
-        <button class="button a number" style="display: inline-block;" data-num="Enter"><i class="icofont-check" style="font-size:7.5vh"></i></button>
-        <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Pick Numbers 0-9</span>
-        <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Press SLASH to exit</span>
-        <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Press ENTER to continue</span>
+        <div id="outA">
+            <span id="resultOut" style="color:white;font-size:6vh;margin:3vw;display:block;font-weight:600;opacity:0.6">Enter a Number</span>
+            <br/>
+            <input type="button" value="7" class="button a number" style="display: inline-block;" data-num="7">
+            <input type="button" value="8" class="button a number" style="display: inline-block;" data-num="8">
+            <input type="button" value="9" class="button a number" style="display: inline-block;" data-num="9">
+            <br/>
+            <input type="button" value="4" class="button a number" style="display: inline-block;" data-num="4">
+            <input type="button" value="5" class="button a number" style="display: inline-block;" data-num="5">
+            <input type="button" value="6" class="button a number" style="display: inline-block;" data-num="6">
+            <br/>
+            <input type="button" value="1" class="button a number" style="display: inline-block;" data-num="1">
+            <input type="button" value="2" class="button a number" style="display: inline-block;" data-num="2">
+            <input type="button" value="3" class="button a number" style="display: inline-block;" data-num="3">
+            <br/>
+            <button id="clearOut" class="button a number" style="display: inline-block;" data-num="/"><i class="icofont-close" style="font-size:7.5vh"></i></button>
+            <input type="button" value="0" class="button a number" style="display: inline-block;" data-num="0">
+            <button class="button number nextstep" style="display: inline-block;" data-num="Enter" data-rest="outA"><i class="icofont-check" style="font-size:7.5vh"></i></button>
+            <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Pick Numbers 0-9</span>
+            <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Press SLASH to exit</span>
+            <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Press ENTER to continue</span>
+        </div>
+        <div id="outB" style="display:none">
+            <div class="optionitem" style="display: flex;justify-content:space-between">
+                <span style="color:white;font-size:6vh;margin:7vw;display:inline-flex;">Group:</span>
+                <input type="button" value="Comp" class="button choice settingschange" style="display: inline-block    ;margin:3vw;height:14vh;width:40vw;text-align:center;font-size:5vw" data-num="1" data-setting="subgroup" >
+            </div>
+            <div class="optionitem" style="display: flex;justify-content:space-between">
+                <span style="color:white;font-size:6vh;margin:7vw;display:inline-flex;">Reason:</span>
+                <input type="button" value="Comp" class="button choice settingschange" style="display: inline-block    ;margin:3vw;height:14vh;width:40vw;text-align:center;font-size:5vw" data-num="2" data-setting="reason" >
+            </div>
+            <br/>
+            <button class="button choice nextstep" style="display: inline-block;width:50vw;height:10vh;font-size:6vw" data-num="Enter" data-rest="outB">Finish</button>
+        </div>
+        
 
     </div>
 
@@ -227,11 +243,11 @@
         <div style="display: block;margin:3vw;max-height:60vh;overflow-y:scroll">
             <div class="optionitem" style="display: flex;justify-content:space-between">
                 <span style="color:white;font-size:6vh;margin:7vw;display:inline-flex;">Mode:</span>
-                <input type="button" value="Comp" class="button choice" style="display: inline-block    ;margin:3vw;height:14vh;width:40vw;text-align:center" data-num="1">
+                <input type="button" value="Comp" class="button choice settingschange" style="display: inline-block    ;margin:3vw;height:14vh;width:40vw;text-align:center" data-num="1" data-setting="mode" >
             </div>
             <div class="optionitem" style="display: flex;justify-content:space-between">
                 <span style="color:white;font-size:6vh;margin:7vw;display:inline-flex;">Isolate:</span>
-                <input type="button" value="No" class="button choice" style="display: inline-block    ;margin:3vw;height:14vh;width:40vw;text-align:center" data-num="2">
+                <input type="button" value="No" class="button choice settingschange" style="display: inline-block    ;margin:3vw;height:14vh;width:40vw;text-align:center" data-num="2" data-setting="isolate">
             </div>
         </div>
         <input type="button" value="Back to Main" class="button choice menuchange" style="display: block;margin:3vw;height:14vh" data-menuto="main" data-num="/">
@@ -246,9 +262,34 @@
     <script>
 
         var menu = "main";
-        var compMode = false;
 
-        var purposes = ["Comp", "Practice", "Systems Check", "Other"];
+
+        var enterText = ["Battery #", "RINT (w/o .)", "SOC"]
+
+        var settings = {
+            "mode": {
+                "value": 0,
+                "options": ["Comp", "No Comp"]
+            },
+            "isolate": {
+                "value": 0,
+                "options": ["No", "Yes"]
+            },
+            "subgroup": {
+                "value": 0,
+                "options": ["Electrical", "Design", "Fabrication", "Programming", "Strategy", "Other"]
+            },
+            "reason": {
+                "value": 0,
+                "options": ["Comp", "Practice", "Systems Check", "Other"]
+            }
+        }
+
+        var currentlyWorking = {
+            "doing" : undefined,
+            "step" : 0
+        }
+
 
         var formData = {
             batteryCode : undefined,
@@ -265,6 +306,18 @@
             document.getElementById("alllogs").scrollBy(0,-40);
         });
 
+
+        Array.from(document.getElementsByClassName("settingschange")).forEach(function(element){
+            element.addEventListener('click', function(evt){
+                var setting = element.dataset.setting;
+                settings[setting]["value"] += 1;
+                if(settings[setting]["value"] >= settings[setting]["options"].length){
+                    settings[setting]["value"] = 0;
+                }
+                evt.srcElement.value = settings[setting]["options"][settings[setting]["value"]];
+            });
+        });
+
         function showNotif(content){
             document.getElementById("notifContent").innerHTML = content;
             document.getElementById("menu_"+menu).style.opacity = "0";
@@ -274,7 +327,7 @@
                 document.getElementById("menu_"+menu).style.display = "inline-block";
                 setTimeout(function(){
                     document.getElementById("menu_"+menu).style.opacity = "1";
-                },20);
+                },30);
                 
             },500);
             setTimeout(function(){
@@ -285,13 +338,14 @@
                     document.getElementById("menu_"+menu).style.display = "inline-block";
                     setTimeout(function(){
                         document.getElementById("menu_"+menu).style.opacity = "1";
-                    },20);
+                    },30);
                     
                 },500);
             }, 3000);
         }
 
        document.addEventListener("keypress", function(e){
+           e.preventDefault();
         var elem = document.getElementById("menu_" + menu);
         var elems = elem.getElementsByClassName("button")
         Array.from(elems).forEach(function(element){
@@ -302,19 +356,84 @@
         });
        });
         var final = "";
+
+        Array.from(document.getElementsByClassName("nextstep")).forEach(function(element){
+            element.addEventListener('click', function(evt){
+                
+                try{
+                    if(document.getElementById(evt.srcElement.dataset.rest).style.display == "none"){
+                        console.log("WHAT")
+                        return;
+                    }
+                }catch(e){
+
+                }
+                
+                    var result = final;
+                    final = "";
+                    
+
+                    if(currentlyWorking["step"] == 1){
+                        formData["batteryCode"] = result;
+                    }else if(currentlyWorking["step"] == 2){
+                        formData["rint"] = "." + result;
+                    }
+                    else if(currentlyWorking["step"] == 3){
+                        formData["soc"] = result + "%";
+                    }
+                    
+
+                    
+
+                    currentlyWorking["step"] += 1;
+                    document.getElementById("resultIn").style.opacity = ".6";
+                    document.getElementById("resultOut").style.opacity = ".6";
+                    document.getElementById("resultIn").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
+                    document.getElementById("resultOut").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
+                    if(currentlyWorking["doing"] == "signin" && currentlyWorking["step"] > 3){
+                        console.log(formData);
+                        showNotif("Signed In");
+                        
+                    }else if(currentlyWorking["doing"] == "signout" && currentlyWorking["step"] > 5){
+                        formData["subgroup"] = settings["subgroup"]["options"][settings["subgroup"]["value"]];
+                        formData["purpose"] = settings["reason"]["options"][settings["reason"]["value"]];
+
+                        console.log(formData)
+                        showNotif("Signed Out");
+                    }
+                    else if(currentlyWorking["doing"] == "signout" && currentlyWorking["step"] == 4){
+                        document.getElementById("outA").style.display = "none";
+                        document.getElementById("outB").style.display = "inline-block";
+                    }
+                
+                
+            });
+        });
         Array.from(document.getElementsByClassName("a")).forEach(function(button){
-            button.addEventListener("click", function(){
-                if(document.getElementById("resultIn").innerHTML == "Enter a Number"){
+            button.addEventListener("click", function(e){
+
+                var toAdd = [];
+                if(currentlyWorking["step"] == 1){
+                    toAdd = ["#",""];
+                }else if(currentlyWorking["step"] == 2){
+                    toAdd = [".",""]
+                }else if(currentlyWorking["step"] == 3){
+                    toAdd = ["","%"]
+                }
+
+                if(document.getElementById("resultIn").innerHTML == (currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A")){
                     final = "";
                 }
-                if(final.length >= 4){
+                if(final.length >= 6){
                     final = "";
                 }
+                console.log(e.srcElement)
                 final += button.value;
+
                 document.getElementById("resultIn").style.opacity = "1";
-                document.getElementById("resultIn").innerHTML = final;
+                document.getElementById("resultIn").innerHTML = toAdd[0] + final + toAdd[1];
                 document.getElementById("resultOut").style.opacity = "1";
-                document.getElementById("resultOut").innerHTML = final;
+                document.getElementById("resultOut").innerHTML = toAdd[0] + final + toAdd[1];
             });
         });
 
@@ -335,8 +454,8 @@
             final = "";
             document.getElementById("resultIn").style.opacity = ".6";
             document.getElementById("resultOut").style.opacity = ".6";
-            document.getElementById("resultIn").innerHTML = "Enter a Number";
-            document.getElementById("resultOut").innerHTML = "Enter a Number";
+            document.getElementById("resultIn").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
+            document.getElementById("resultOut").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
         });
         document.getElementById("clearOut").addEventListener("click", function(){
             if(final == ""){
@@ -347,20 +466,33 @@
                     document.getElementById("menu_"+menu).style.display = "inline-block";
                     setTimeout(function(){
                         document.getElementById("menu_"+menu).style.opacity = "1";
-                    },20);
+                    },30);
                 },500);
             }
             final = "";
             document.getElementById("resultIn").style.opacity = ".6";
             document.getElementById("resultOut").style.opacity = ".6";
-            document.getElementById("resultIn").innerHTML = "Enter a Number";
-            document.getElementById("resultOut").innerHTML = "Enter a Number";
+            document.getElementById("resultIn").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
+            document.getElementById("resultOut").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
         });
 
         
 
         Array.from(document.getElementsByClassName("menuchange")).forEach(function(button){
             button.addEventListener("click", function(){
+
+                if(button.dataset.menuto.includes("sign")){
+                    document.getElementById("outA").style.display = "inline-block";
+                    document.getElementById("outB").style.display = "none";
+                    
+                    currentlyWorking["doing"] = button.dataset.menuto;
+                    currentlyWorking["step"] = 1;
+                    document.getElementById("resultIn").style.opacity = ".6";
+                    document.getElementById("resultOut").style.opacity = ".6";
+                    document.getElementById("resultIn").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
+                    document.getElementById("resultOut").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
+                }
+
                 document.getElementById("menu_"+menu).style.opacity = "0";
                 setTimeout(function(){
                     document.getElementById("menu_"+menu).style.display = "none";
@@ -368,7 +500,7 @@
                     document.getElementById("menu_"+menu).style.display = "inline-block";
                     setTimeout(function(){
                         document.getElementById("menu_"+menu).style.opacity = "1";
-                    },20);
+                    },30);
                 },500);
                 
                 
