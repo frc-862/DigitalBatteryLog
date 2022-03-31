@@ -299,6 +299,13 @@
             purpose : undefined
         };
 
+
+        async function fetchAsync (url) {
+            let response = await fetch(url, {headers:{'lrAction' : "YESSSSSS"}});
+            let data = await response.json();
+            return data;
+          }
+
         document.getElementById('logscrolldown').addEventListener('click', function(){
             document.getElementById("alllogs").scrollBy(0,40);
         });
@@ -368,6 +375,8 @@
                 }catch(e){
 
                 }
+
+                
                 
                     var result = final;
                     final = "";
@@ -375,6 +384,14 @@
 
                     if(currentlyWorking["step"] == 1){
                         formData["batteryCode"] = result;
+                        fetchAsync("/api/isBatteryOut/" + formData["batteryCode"]).then(function(data){
+                            console.log(data);
+                            if(currentlyWorking["doing"] == "signout" && data["signedOut"] == true){
+                                showNotif("Battery is already signed out");
+                            }else if(currentlyWorking["doing"] == "signin" && data["signedOut"] == false){
+                                showNotif("Battery is already signed in");
+                            }
+                        });
                     }else if(currentlyWorking["step"] == 2){
                         formData["rint"] = "." + result;
                     }

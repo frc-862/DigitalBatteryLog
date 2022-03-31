@@ -1,5 +1,6 @@
 const http = require('http')
 const fs = require('fs')
+const isSignedOut = require("../database/functions/isSignedOut.js");
 async function app() {
   const server = http.createServer((req, res) => {
 
@@ -7,8 +8,8 @@ async function app() {
     if(req.method == "GET"){
 
       // GETTING PAGE OR GETTING DATA
-
-      if(req.headers["lrAction"] == undefined){
+      console.log(req.url);
+      if(!req.url.includes("/api")){
         // get page
         fs.readFile("michael.html", function(err, data) {
           res.setHeader("Content-Type", "text/html");
@@ -19,15 +20,37 @@ async function app() {
         
       }else{
         // get from API
+        console.log("GETTING DATA FROM API")
+
+
         res.writeHead(200, { 'content-type': 'application/json' });
-        res.end({data : "In Progress"});
+
+        if(req.url.includes("isBatteryOut")){
+          
+          var batRaw = req.url.split("/")[req.url.split("/").length - 1];
+          if(batRaw.length != 4){
+            res.end(JSON.stringify({valid : false}));
+          }
+          var batNum = batRaw.substring(0,2) + "." + batRaw.substring(2,4);
+          batNum = parseFloat(batNum);
+
+          isSignedOut(batNum).then(function(data){
+            console.log(data);
+            if(data){
+              res.end(JSON.stringify({valid : true, signedOut : data}));
+            }else{
+              res.end(JSON.stringify({valid : false, signedOut : false}));
+            }
+          });
+        }
+        //res.end(JSON.stringify({message : "Not Implemented"}));
         
       }
       
     }else{
       // POSTING DATA
       res.writeHead(200, { 'content-type': 'application/json' });
-      res.end({message : "Not Implemented"});
+      res.end(JSON.stringify({message : "Not Implemented"}));
     }
     
 
