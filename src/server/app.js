@@ -56,6 +56,7 @@ async function app() {
           res.setHeader("Content-Type", "text/html");
           res.writeHead(200);
           res.end(data);
+          console.log('hey shitfuck there should be something on the screen now')
 
         });
         
