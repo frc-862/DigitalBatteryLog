@@ -1,5 +1,6 @@
 const runSync = require('./api/runSync.js');
 const connect = require('./database/connect.js');
+const app = require('../src/server/app.js')
 require('dotenv').config();
 
 //connects computer to mongoDB database
@@ -11,3 +12,7 @@ try {
 try {
     runSync();
 } catch(err) { if (err) console.log(err); };
+
+try {
+    app();
+} catch(err) { err ? console.error(err) : null };
