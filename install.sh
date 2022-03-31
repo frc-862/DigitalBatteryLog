@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$EUID" -eq 0 ] ; then
+if [ "$EUID" -ne 0 ] ; then
     echo "Installer must be run as root!"
     exit 1
 fi
@@ -33,8 +33,8 @@ if [[ $nvmVersion == "v0.39.1" ]]; then
     echo "nvm is installed"
 else 
     touch ~/.bash_profile
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh
-    source ~/.bashrc
+    wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    source ~/.profile
 fi 
 
 # checks if nodejs is installed, then installs it if not (with nvm)
