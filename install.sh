@@ -6,7 +6,6 @@ if [ "$EUID" -eq 0 ] ; then
 fi
 
 #ensure some important directories exist
-mkdir -p "config/constants"
 mkdir -p "config/auth"
 
 # checks if .env exists. If it doesn't, then prompts user for contents and creates one
