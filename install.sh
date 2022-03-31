@@ -38,7 +38,7 @@ nodeVersion=$(node --version)
 if [[ $nodeVersion == "v16.14.2" ]]; then
     echo "Node is installed, continuing..."
 else 
-    nvm install node v16.14.2
+    nvm install v16.14.2
 fi 
 
 #installs npm dependencies 
