@@ -23,6 +23,8 @@ if [[ ! -f ".env" ]]; then
 fi
 
 # checks if nvm is installed, then installs it if it is not. 
+export NVM_DIR=$HOME/.nvm;
+source $NVM_DIR/nvm.sh;
 nvmVersion=$(nvm --version)
 if [[ $nvmVersion == "v0.39.1" ]]; then
     echo "NVM is installed, continuing..."
@@ -30,9 +32,6 @@ else
     wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
     source ~/.profile
 fi 
-
-export NVM_DIR=$HOME/.nvm;
-source $NVM_DIR/nvm.sh;
 
 # checks if nodejs is installed, then installs it if not (with nvm)
 nodeVersion=$(node --version)
