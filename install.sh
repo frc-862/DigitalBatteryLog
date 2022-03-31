@@ -33,7 +33,8 @@ if [[ $nvmVersion == "v0.39.1" ]]; then
     echo "nvm is installed"
 else 
     touch ~/.bash_profile
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh
+    source ~/.bashrc
 fi 
 
 # checks if nodejs is installed, then installs it if not (with nvm)
