@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if [ "$EUID" -eq 0 ] ; then
-    echo "Installer must be run as root!"
-    exit 1
-fi
-
 #ensure some important directories exist
 mkdir -p "config/auth"
 
@@ -28,20 +23,22 @@ if [[ ! -f ".env" ]]; then
 fi
 
 # checks if nvm is installed, then installs it if it is not. 
+export NVM_DIR=$HOME/.nvm;
+source $NVM_DIR/nvm.sh;
 nvmVersion=$(nvm --version)
-if [[ $nvmVersion == "v0.39.1" ]]; then
-    echo "nvm is installed"
+if [[ $nvmVersion == "0.39.1" ]]; then
+    echo "NVM is installed, continuing..."
 else 
-    touch ~/.bash_profile
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    source ~/.profile
 fi 
 
 # checks if nodejs is installed, then installs it if not (with nvm)
 nodeVersion=$(node --version)
-if [[ ! $nodeVersion == "v16.14.2" ]]; then
-    echo "node is not installed"
+if [[ $nodeVersion == "v16.14.2" ]]; then
+    echo "Node is installed, continuing..."
 else 
-    nvm install node v16.14.2
+    nvm install v16.14.2
 fi 
 
 #installs npm dependencies 
