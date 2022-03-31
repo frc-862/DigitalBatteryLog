@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if [ "$EUID" -ne 0 ] ; then
-    echo "Installer must be run as root!"
-    exit 1
-fi
-
 #ensure some important directories exist
 mkdir -p "config/auth"
 
@@ -32,7 +27,6 @@ nvmVersion=$(nvm --version)
 if [[ $nvmVersion == "v0.39.1" ]]; then
     echo "nvm is installed"
 else 
-    touch ~/.bash_profile
     wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
     source ~/.profile
 fi 
