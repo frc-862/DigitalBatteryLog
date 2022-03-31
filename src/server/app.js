@@ -3,6 +3,7 @@ const fs = require('fs')
 // get functions to communicate to server
 const isSignedOut = require("../database/functions/isSignedOut.js");
 const submitData = require("../database/functions/submitDataByBatteryNumber.js");
+const getlogs = require("../database/functions/listSignedOut.js");
 // run function app when ready
 async function app() {
   const server = http.createServer((req, res) => {
@@ -35,15 +36,21 @@ async function app() {
               res.end(JSON.stringify({valid : false, signedOut : false}));
             }
           });
+        }else if(req.url.includes("/allsignedout")){
+          getlogs().then(function(data){
+            console.log(data);
+            res.end(JSON.stringify(data));
+          });
         }
         
         
       }else{
+
+        // if default path, set back to michael
         if(req.url == "/"){
           req.url = "/michael.html";
         }
-        console.log(req.url);
-        // get page
+        // get static file from folder
         fs.readFile("src" + req.url, function(err, data) {
           // must specify diff. content type
           res.setHeader("Content-Type", "text/html");
