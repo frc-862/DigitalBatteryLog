@@ -11,17 +11,7 @@ async function app() {
     if(req.method == "GET"){
 
       // If the request is not going to the API, return the HTML file
-      if(!req.url.includes("/api")){
-        // get page
-        fs.readFile("michael.html", function(err, data) {
-          // must specify diff. content type
-          res.setHeader("Content-Type", "text/html");
-          res.writeHead(200);
-          res.end(data);
-
-        });
-        
-      }else{
+      if(req.url.includes("/api")){
         // data needs to be gotten from api
 
         // all API data is JSON
@@ -46,7 +36,21 @@ async function app() {
             }
           });
         }
+        
+        
+      }else{
+        if(req.url == "/"){
+          req.url = "/michael.html";
+        }
+        console.log(req.url);
+        // get page
+        fs.readFile("src" + req.url, function(err, data) {
+          // must specify diff. content type
+          res.setHeader("Content-Type", "text/html");
+          res.writeHead(200);
+          res.end(data);
 
+        });
         
       }
       
@@ -54,6 +58,7 @@ async function app() {
       // Otherwise, request must be a POST
       // all post data is JSON
       res.writeHead(200, { 'content-type': 'application/json' });
+      
       // checking if the request is to submit data
       if(req.url.includes("/submitsign")){
         // needs to get chunks of data before ending the request
