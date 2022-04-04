@@ -48,7 +48,7 @@ if [[ ! -f ".env" ]]; then
     echo "#full url of the google sheet you are logging data on"> ".env"
     echo "sheetURL=$sheetLink" > ".env"
     echo "#mongoDB Database address"
-    echo "databaseAddress=mongodb://localhost:27017/test" > ".env"
+    echo "databaseAddress=mongodb://localhost:27017/batteryLogs" > ".env"
     echo "#permissions for google OAuth2" > ".env"
     echo "scopes=[\"https://www.googleapis.com/auth/spreadsheets\"]" > ".env"
 
