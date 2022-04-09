@@ -4,7 +4,7 @@ const batteryDataModel = require("../schemas/batterySchema.js");
 require('dotenv').config()
 
 try {
-    mongoose.connect(process.env.databaseAddress).then(() => { console.log('connected'); createDocument(); });
+    mongoose.connect(process.env.databaseAddress).then(() => { console.log('connected') });
 } catch (err) {
     if (err) console.error(err);
 }
@@ -19,6 +19,7 @@ async function clearDb() {
         if (res != 'Y') return;
         batteryDataModel.deleteMany({}, (err) => {
             if (err) console.error(err);
+            console.log('done')
         })
     })
 }
