@@ -3,7 +3,7 @@ const fs = require('fs')
 // get functions to communicate to server
 const isSignedOut = require("../database/functions/isSignedOut.js");
 const submitData = require("../database/functions/submitDataByBatteryNumber.js");
-const getlogs = require("../database/functions/listSignedOut.js");
+const getlogs = require("../database/functions/getLogs.js");
 // run function app when ready
 async function app() {
   const server = http.createServer((req, res) => {
