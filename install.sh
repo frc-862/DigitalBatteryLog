@@ -1,19 +1,45 @@
 #!/bin/bash
 
-if [ "$EUID" -eq 0 ] ; then
-    echo "Installer must be run as root!"
-    exit 1
-fi
+# Screen defaults
+ADAFRUIT_SCREEN_SIZE="2.8"
+ADAFRUIT_TOUCH_ENABLED=false
+ADAFRUIT_TOUCH_RESISTIVE=true
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -t|--touch)
+      SEARCHPATH="$2"
+      shift # past argument
+      ;;
+    --toggle-touch-type )
+      SEARCHPATH="$2"
+      shift # past arg
+      ;;
+    --screen-size)
+      EXTENSION="$2"
+      shift # past argument
+      shift # past value
+      ;;
+    -*|--*)
+      echo "Unknown option $1"
+      exit 1
+      ;;
+    *)
+      POSITIONAL_ARGS+=("$1") # save positional arg
+      shift # past argument
+      ;;
+  esac
+done
+
+set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 
 #ensure some important directories exist
-mkdir -p "config/constants"
 mkdir -p "config/auth"
 
 # checks if .env exists. If it doesn't, then prompts user for contents and creates one
 if [[ ! -f ".env" ]]; then   
     echo ".env does not exist, creating it now"
     echo "In minutes how often do you want to sync data with google sheets?"
-    echo "Please enter an integer"
     read -r syncTime
     echo "# the interval at which the program will attempt to sync any database changes to google sheets." > ".env"
     echo "syncInterval=$syncTime " > ".env"
@@ -29,20 +55,21 @@ if [[ ! -f ".env" ]]; then
 fi
 
 # checks if nvm is installed, then installs it if it is not. 
-nvmVersion=$(nvm --version)
-if [[ $nvmVersion == "v0.39.1" ]]; then
-    echo "nvm is installed"
+# requires source ~/.profile to be run to ensure nvm is available
+export NVM_DIR=$HOME/.nvm
+source $NVM_DIR/nvm.sh
+if [[ $(nvm --version) == "0.39.1" ]]; then
+    echo "NVM is installed, continuing..."
 else 
-    touch ~/.bash_profile
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    source ~/.profile
 fi 
 
 # checks if nodejs is installed, then installs it if not (with nvm)
-nodeVersion=$(node --version)
-if [[ ! $nodeVersion == "v16.14.2" ]]; then
-    echo "node is not installed"
+if [[ $(node --version) == "v16.14.2" ]]; then
+    echo "Node is installed, continuing..."
 else 
-    nvm install node v16.14.2
+    nvm install 16.14.2
 fi 
 
 #installs npm dependencies 

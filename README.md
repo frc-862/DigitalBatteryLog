@@ -4,8 +4,8 @@ Log battery sign-outs with the battery number, time signed out/in, and battery s
 
 ## Hardware
 
-1. Raspberry Pi 2/3 with internet
-2. Adafruit PiTFT 2.4" Hat
+1. Raspberry Pi 2/3/4 with internet
+2. Adafruit PiTFT Hat w/ or w/out touch (resistive)
 
 ### Node Dependencies
 
@@ -15,7 +15,7 @@ Log battery sign-outs with the battery number, time signed out/in, and battery s
 
 ### Setup
 
-**Note**: These instructions are specifically for Raspbian 11 (bullseye).
+**Note**: These instructions are specifically for Raspbian 11 (bullseye). This setup was tested on a Raspberry Pi 3 B using a 2.4" TFT without touch.
 
 #### First clone the repository via HTTP
 

@@ -15,32 +15,35 @@ async function submitDataByBatteryNumber(bNum, rintBefore, socBefore, rintAfter,
         doc.timeIn = new Date().toString();
         doc.signedOut = false;
     }
+    doc.batteryNumber = bNum;
     //if null or undefined isn't passed into the function, then it will change the values of the doc to match what was passed in
-    if (rintBefore != null || rintBefore != undefined) {
+    if (rintBefore != null && rintBefore != undefined) {
         doc.beakBefore.rint = rintBefore;
     } 
     
-    if (socBefore != null || socBefore != undefined) {
-        doc.beakBefore.soc == socBefore;
+    if (socBefore != null && socBefore != undefined) {
+        doc.beakBefore.soc = socBefore;
     }   
 
-    if (rintAfter != null || rintAfter != undefined) {
+    if (rintAfter != null && rintAfter != undefined) {
         doc.beakAfter.rint = rintAfter;
     } 
 
-    if (socAfter != null || socAfter != undefined) {
+    if (socAfter != null && socAfter != undefined) {
         doc.beakAfter.soc = socAfter;
     }
 
-    if (purpose != null || purpose != undefined) {
+    if (purpose != null && purpose != undefined) {
         doc.purpose = purpose;
     }
 
-    if (subgroup != null || subgroup != undefined) {
+    if (subgroup != null && subgroup != undefined) {
         doc.subgroup = subgroup;
     }
     //sets updated state of doc to false so it will be updated by sync function
-    doc.updated = false; 
+    doc.updated = false;
+    doc.save();
+    
 
 }
 
