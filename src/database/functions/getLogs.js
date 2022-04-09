@@ -1,6 +1,6 @@
 // returns all batteries signed in within the last 2 hours 
 const batteryDataModel = require('../../schemas/batterySchema.js')
-async function getSignedInLogs() {
+async function getLogs() {
 
 const currentTime = Date.now()
 //gets all singed In documents
@@ -15,4 +15,4 @@ for (let doc in res) {
 //returns an array of all docs that meet this requirement. 
 return finalDocs; 
 }
-module.exports = getSignedInLogs;   
+module.exports = getLogs;   
