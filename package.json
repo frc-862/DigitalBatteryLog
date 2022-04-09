@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "manualCreate": "node ./src/tools/manualCreate.js",
-    "getToken": "node ./src/tools/getNewToken.js"
+    "getToken": "node ./src/tools/getNewToken.js",
+    "clearDb": "node ./src/tools/clearDb.js"
   },
   "keywords": [],
   "author": "",
