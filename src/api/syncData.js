@@ -59,7 +59,7 @@ async function checkDb() {
         if (res[updated].subgroup == undefined) {
             values[8] = null;
         } else {
-            values[8] = `${res[updated].purpose}`;
+            values[8] = `${res[updated].subgroup}`;
         }
         finalVals.push(values);
     }
