@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "manualCreate": "node ./src/tools/manualCreate.js",
     "getToken": "node ./src/tools/getNewToken.js",
-    "clearDb": "node ./src/tools/clearDb.js"
+    "clearDb": "node ./src/tools/clearDB.js"
   },
   "keywords": [],
   "author": "",
