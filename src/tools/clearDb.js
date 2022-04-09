@@ -23,4 +23,4 @@ async function clearDb() {
         })
     })
 }
-clearDb;
+clearDb();
