@@ -48,7 +48,7 @@ async function app() {
 
         // if default path, set back to michael
         if(req.url == "/"){
-          req.url = "/michael.html";
+          req.url = "/index.html";
         }
         // get static file from folder
         fs.readFile("src" + req.url, function(err, data) {
