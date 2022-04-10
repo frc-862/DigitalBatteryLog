@@ -523,6 +523,7 @@
         setInterval(function(){
             fetchAsync("/api/allsignedout", {lrAction : "YES"}).then(function(data){
                 var batteries = data;
+                console.log(batteries)
                 document.getElementById("alllogs").innerHTML = "";
                 batteries.forEach(function(battery){
                     try{
