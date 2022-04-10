@@ -123,7 +123,7 @@ async function writeData(auth, values, document, row) {
             range = `Sheet1!A${nextOpenRow}:I`
             document[vals].row = nextOpenRow;
         } else {
-            range = `Sheet1!A${row}:I`
+            range = `Sheet1!A${row[vals]}:I`
         }
         const resource = {
             "majorDimension": 'ROWS',
