@@ -3,7 +3,7 @@ const fs = require('fs')
 // get functions to communicate to server
 const isSignedOut = require("../database/functions/isSignedOut.js");
 const submitData = require("../database/functions/submitDataByBatteryNumber.js");
-const getlogs = require("../database/functions/getLogs.js");
+const getLogs = require("../database/functions/getLogs.js");
 // run function app when ready
 async function app() {
   const server = http.createServer((req, res) => {
@@ -37,7 +37,7 @@ async function app() {
             }
           });
         }else if(req.url.includes("/allsignedout")){
-          getlogs().then(function(data){
+          getLogs().then(function(data){
             console.log(data);
             res.end(JSON.stringify(data));
           });
