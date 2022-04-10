@@ -13,6 +13,7 @@ for (let doc in res) {
     }
 }
 //returns an array of all docs that meet this requirement. 
+console.log(finalDocs)
 return finalDocs; 
 }
 module.exports = getLogs;   
