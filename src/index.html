@@ -530,29 +530,31 @@
                         var timeString2 = "---";
                         if(battery.timeOut != undefined){
                             var date = new Date(battery.timeOut);
-                            
-                            timeString = date.getHours() + ":" + date.getMinutes().toString().padStart(2, "0") + ":" + date.getSeconds().toString().padStart(2, "0");
+                            timeString = (date.getHours() > 12 ? date.getHours() - 12 : date.getHours()) + ":" + date.getMinutes().toString().padStart(2, "0") + ":" + date.getSeconds().toString().padStart(2, "0") + (date.getHours() >= 12 ? 'PM' : 'AM');
                             
                         }
                         if(battery.timeIn != undefined){
                             var date = new Date(battery.timeIn);
-                            timeString2 = date.getHours() + ":" + date.getMinutes().toString().padStart(2, "0") + ":" + date.getSeconds().toString().padStart(2, "0");
+                            timeString2 = (date.getHours() > 12 ? date.getHours() - 12 : date.getHours()) + ":" + date.getMinutes().toString().padStart(2, "0") + ":" + date.getSeconds().toString().padStart(2, "0") + (date.getHours() >= 12 ? 'PM' : 'AM');
                             
                         }
                         
                         document.getElementById("alllogs").innerHTML += `<div class="logitem" style="display:flex;justify-content:space-between">
                             <span style="color:white;font-size:3vh;margin:3vw;display:inline-flex;">${battery.batteryNumber}</span>
-                            <span style="color:white;font-size:3vh;margin:3vw;display:inline-flex;">${battery.signedOut ? "OUT" : "IN"}</span>
                             <div style="display:inline-flex;margin:3vw">
-                                <span style="color:white;font-size:2vh;display:block;">${timeString} ${timeString2}</span>
+                                <span style="color:white;font-size:2vh;display:block;">${timeString}</span>
                            
                             </div>
                             <div style="display:inline-flex;margin:3vw">
-                                <span style="color:white;font-size:2vh;display:block;">${battery.beakBefore == undefined ? "---" : battery.beakBefore.rint} ${battery.beakAfter == undefined ? "---" : battery.beakAfter.rint}</span>
+                                <span style="color:white;font-size:2vh;display:block;">${battery.beakBefore == undefined ? "---" : battery.beakBefore.rint} / ${battery.beakAfter == undefined ? "---" : battery.beakBefore.soc}%</span>
                                
                             </div>
                             <div style="display:inline-flex;margin:3vw">
-                                <span style="color:white;font-size:2vh;display:block;">${battery.beakBefore == undefined ? "---" : battery.beakBefore.soc}% ${battery.beakAfter == undefined ? "---" : battery.beakAfter.soc}%</span>
+                                <span style="color:white;font-size:2vh;display:block;">${timeString2}</span>
+                           
+                            </div>
+                            <div style="display:inline-flex;margin:3vw">
+                                <span style="color:white;font-size:2vh;display:block;">${battery.beakBefore == undefined ? "---" : battery.beakAfter.rint} / ${battery.beakAfter == undefined ? "---" : battery.beakAfter.soc}%</span>
                                
                             </div>
                             

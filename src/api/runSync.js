@@ -13,7 +13,11 @@ async function runSync() {
         checkInternet(function(isConnected) {
             if (isConnected) {
                 console.log('Internet connection good; scanning for updates');
-                checkDb();
+                try {
+                    checkDb();
+                } catch(err){
+                    if (err) console.log(err);
+                }
             } else {
                 return;
             }
