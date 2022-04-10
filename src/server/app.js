@@ -38,7 +38,7 @@ async function app() {
           });
         }else if(req.url.includes("/allsignedout")){
           getlogs().then(function(data){
-            //console.log(data);
+            console.log(data);
             res.end(JSON.stringify(data));
           });
         }
