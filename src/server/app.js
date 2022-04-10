@@ -7,7 +7,7 @@ const getLogs = require("../database/functions/getLogs.js");
 // run function app when ready
 async function app() {
   const server = http.createServer((req, res) => {
-
+    console.log(req.url)
     // check if request is a GET request to get data or HTML
     if(req.method == "GET"){
 
@@ -38,7 +38,7 @@ async function app() {
           });
         }else if(req.url.includes("/allsignedout")){
           getLogs().then(function(data){
-            console.log(data);
+            //console.log(JSON.stringify(data));
             res.end(JSON.stringify(data));
           });
         }

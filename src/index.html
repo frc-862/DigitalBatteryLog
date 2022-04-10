@@ -521,11 +521,13 @@
         });
 
         setInterval(function(){
+            console.log('OKKKKK')
             fetchAsync("/api/allsignedout", {lrAction : "YES"}).then(function(data){
                 var batteries = data;
-                console.log(batteries)
+                //console.log(batteries)
                 document.getElementById("alllogs").innerHTML = "";
                 batteries.forEach(function(battery){
+                    console.log(battery)
                     try{
                         var timeString = "---";
                         var timeString2 = "---";
@@ -555,7 +557,7 @@
                            
                             </div>
                             <div style="display:inline-flex;margin:3vw">
-                                <span style="color:white;font-size:2vh;display:block;">${battery.beakBefore == undefined ? "---" : battery.beakAfter.rint} / ${battery.beakAfter == undefined ? "---" : battery.beakAfter.soc}%</span>
+                                <span style="color:white;font-size:2vh;display:block;">${battery.beakAfter == undefined ? "---" : battery.beakAfter.rint} / ${battery.beakAfter == undefined ? "---" : battery.beakAfter.soc}%</span>
                                
                             </div>
                             
@@ -566,7 +568,7 @@
                     }
                     
                 });
-            });
+            }); 
         }, 5000);
 
     </script>
