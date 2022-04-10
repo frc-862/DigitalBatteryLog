@@ -7,7 +7,6 @@ const getLogs = require("../database/functions/getLogs.js");
 // run function app when ready
 async function app() {
   const server = http.createServer((req, res) => {
-    console.log(req.url)
     // check if request is a GET request to get data or HTML
     if(req.method == "GET"){
 
