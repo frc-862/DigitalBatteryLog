@@ -370,7 +370,7 @@
                 
                 try{
                     if(document.getElementById(evt.srcElement.dataset.rest).style.display == "none"){
-                        console.log("WHAT")
+                        //console.log("WHAT")
                         return;
                     }
                 }catch(e){
@@ -400,9 +400,20 @@
                             }
                         });
                     }else if(currentlyWorking["step"] == 2){
+                        if(settings["mode"]["value"] == 0){
+                            showOverlay("You must provide an RINT");
+                            currentlyWorking["step"] -= 1;
+                            setStepContent();
+                        }
                         formData["rint"] = "." + result;
+                        
                     }
                     else if(currentlyWorking["step"] == 3){
+                        if(settings["mode"]["value"] == 0){
+                            showOverlay("You must provide an SOC");
+                            currentlyWorking["step"] -= 1;
+                            setStepContent();
+                        }
                         formData["soc"] = result + "%";
                     }
                     
