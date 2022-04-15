@@ -8,7 +8,7 @@ const res = await batteryDataModel.find();
 let finalDocs = [];
 //for every battery signed in, add it to the final values list ONLY if its only been signed back in for under 2 hours
 for (let doc in res) {
-    if (currentTime - Date.parse(res[doc].timeIn) <= 18000000 || currentTime - Date.parse(res[doc].timeOut) <= 18000000 ) {
+    if (currentTime - Date.parse(res[doc].timeIn) <= process.env.logLength * 3600000 || currentTime - Date.parse(res[doc].timeOut) <= process.env.logLength * 3600000 ) {
         finalDocs.push(res[doc])
     }
 }
