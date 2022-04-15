@@ -63,7 +63,11 @@ async function checkDb() {
         }
         finalVals.push(values);
     }
-    update(finalVals, finalDocs, finalRows);
+    try {
+        update(finalVals, finalDocs, finalRows);
+    } catch (err) {
+        if (err) console.log(err)
+    }
 }
 module.exports = checkDb;
 async function update(values, document, row) {
@@ -71,7 +75,11 @@ async function update(values, document, row) {
     fs.readFile(CREDENTIALS_PATH, (err, content) => {
         if (err) return console.log('Error loading client secret file:', err);
         // Authorize a client with credentials, then call the Google Sheets API.
-        authorize(JSON.parse(content), writeData, values, document, row);
+        try {
+            authorize(JSON.parse(content), writeData, values, document, row);
+        } catch (err) {
+            if (err) console.log(err)
+        }
     });
 }
 
@@ -90,11 +98,15 @@ async function authorize(credentials, callback, values, document, row) {
     fs.readFile(TOKEN_PATH, (err, token) => {
         if (err) {
             //if there is no token.json file, return an error and kill the program
-                        console.error('Cannot find token, please run getNewToken.js');
-                        return process.kill();
+            console.error('Cannot find token, please run getNewToken.js');
+            return process.kill();
         } else {
-        oAuth2Client.setCredentials(JSON.parse(token));
-        callback(oAuth2Client, values, document, row);
+            oAuth2Client.setCredentials(JSON.parse(token));
+            try {
+                callback(oAuth2Client, values, document, row);
+            } catch (err) {
+                if (err) console.log(err)
+            }
         }
     });
 }
@@ -108,7 +120,7 @@ async function writeData(auth, values, document, row) {
     const sheets = google.sheets({ version: 'v4', auth });
     for (let vals in values) {
         //reads spreadsheet
-        const res = await sheets.spreadsheets.values.get({ spreadsheetId: spreadsheetId, range: 'A2:I' })
+        const res = await sheets.spreadsheets.values.get({ spreadsheetId: spreadsheetId, range: 'A2:I' }).catch((err) => console.error('fatal error occurred', err))
         //determines the next blank row
         let nextOpenRow;
         if (res.data.values == undefined) {
