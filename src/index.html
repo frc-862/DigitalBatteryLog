@@ -145,6 +145,7 @@
             </div>
             <br/>
             <button class="button choice nextstep" style="display: inline-block;width:50vw;height:10vh;font-size:6vw" data-num="Enter" data-rest="outB">Finish</button>
+            <button id="clearOut2" class="button choice" style="display: inline-block;width:50vw;height:10vh;font-size:6vw">Cancel</button>
             <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Toggle option using 1</span>
             <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Press SLASH to exit</span>
             <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Press ENTER to continue</span>
@@ -400,7 +401,7 @@
                             }
                         });
                     }else if(currentlyWorking["step"] == 2){
-                        if(settings["mode"]["value"] == 0 && final == ""){
+                        if(settings["mode"]["value"] == 0 && result == ""){
                             showOverlay("You must provide an RINT");
                             currentlyWorking["step"] -= 1;
                             setStepContent();
@@ -409,7 +410,7 @@
                         
                     }
                     else if(currentlyWorking["step"] == 3){
-                        if(settings["mode"]["value"] == 0 && final == ""){
+                        if(settings["mode"]["value"] == 0 && result == ""){
                             showOverlay("You must provide an SOC");
                             currentlyWorking["step"] -= 1;
                             setStepContent();
@@ -441,7 +442,7 @@
                 if(document.getElementById("resultIn").innerHTML == (currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A")){
                     final = "";
                 }
-                if(final.length >= 6){
+                if(final.length >= 8){
                     final = "";
                 }
                 console.log(e.srcElement)
@@ -499,7 +500,22 @@
             document.getElementById("resultIn").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
             document.getElementById("resultOut").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
         });
-
+        document.getElementById("clearOut2").addEventListener("click", function(){
+            document.getElementById("menu_"+menu).style.opacity = "0";
+                setTimeout(function(){
+                    document.getElementById("menu_"+menu).style.display = "none";
+                    menu = "main";
+                    document.getElementById("menu_"+menu).style.display = "inline-block";
+                    setTimeout(function(){
+                        document.getElementById("menu_"+menu).style.opacity = "1";
+                    },30);
+                },500);
+            final = "";
+            document.getElementById("resultIn").style.opacity = ".6";
+            document.getElementById("resultOut").style.opacity = ".6";
+            document.getElementById("resultIn").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
+            document.getElementById("resultOut").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
+        });
         
 
         Array.from(document.getElementsByClassName("menuchange")).forEach(function(button){
