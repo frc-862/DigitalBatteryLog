@@ -16,9 +16,9 @@ Log battery sign-outs with the battery number, time signed out/in, and battery s
 
 ### Setup
 
+
 **Note**: These instructions are specifically for Ubuntu server 20.04.4LTS (64bit ARM64). For help on installing this operating system, please click [here](https://www.maketecheasier.com/install-ubuntu-on-raspberry-pi/).
 > Warning: You MUST install the 64 bit version (ARM64 architecture) of Ubuntu server.
-
 
 #### First clone the repository via HTTP
 

@@ -56,6 +56,11 @@
     </style>
 </head>
 <body style="text-align: center;overflow:hidden">
+    <div id="overlay" class="menu" style="position:absolute;width:100%;height:100%;top:0;bottom:0;right:0;left:0;background-color:rgba(0,0,0,0.5);z-index:2;display:none;opacity:0">
+        <div style="background-color: #000044;padding:5vw;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:10vw;width:80vw">
+            <span id="overlayMessage" style="color:white;font-size:5vh;margin:3vw;display:block;font-weight:600">Battery Already Signed Out...</span>
+        </div>
+    </div>
     <div id="menu_main" style="margin:10px;display:inline-block;" class="menu">
         <span style="color:white;font-size:6vh;margin:3vw;display:block;font-weight:600">Battery Manager</span>
         
@@ -73,101 +78,8 @@
     <div id="menu_logs" style="margin:10px;display:none;" class="menu">
         <span style="color:white;font-size:6vh;margin:3vw;display:block;font-weight:600">Logs</span>
         <div style="display: block;margin:3vw;max-height:60vh;overflow-y:scroll" id="alllogs">
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
-            <div class="logitem" style="display:flex;justify-content:space-between">
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">B 101</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">9:59PM</span>
-                <span style="color:white;font-size:4vh;margin:3vw;display:inline-flex;">Comp</span>
-            </div>
+            
+            
         </div>
         <input id="logscrollup" type="button" value="Up" class="button a number" style="display: none;" data-num="8">
         <input id="logscrolldown" type="button" value="Down" class="button a number" style="display: none;" data-num="2">
@@ -223,16 +135,21 @@
             <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Press ENTER to continue</span>
         </div>
         <div id="outB" style="display:none">
-            <div class="optionitem" style="display: flex;justify-content:space-between">
+            <div id="groupOut" class="optionitem" style="display: flex;justify-content:space-between">
                 <span style="color:white;font-size:6vh;margin:7vw;display:inline-flex;">Group:</span>
                 <input type="button" value="Comp" class="button choice settingschange" style="display: inline-block    ;margin:3vw;height:14vh;width:40vw;text-align:center;font-size:5vw" data-num="1" data-setting="subgroup" >
             </div>
-            <div class="optionitem" style="display: flex;justify-content:space-between">
+            <div id="reasonOut" class="optionitem" style="display: flex;justify-content:space-between">
                 <span style="color:white;font-size:6vh;margin:7vw;display:inline-flex;">Reason:</span>
-                <input type="button" value="Comp" class="button choice settingschange" style="display: inline-block    ;margin:3vw;height:14vh;width:40vw;text-align:center;font-size:5vw" data-num="2" data-setting="reason" >
+                <input type="button" value="Comp" class="button choice settingschange" style="display: inline-block    ;margin:3vw;height:14vh;width:40vw;text-align:center;font-size:5vw" data-num="1" data-setting="reason" >
             </div>
             <br/>
             <button class="button choice nextstep" style="display: inline-block;width:50vw;height:10vh;font-size:6vw" data-num="Enter" data-rest="outB">Finish</button>
+            <button id="clearOut2" class="button choice" style="display: inline-block;width:50vw;height:10vh;font-size:6vw">Cancel</button>
+            <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Toggle option using 1</span>
+            <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Press SLASH to exit</span>
+            <span style="color:white;font-size:2vh;margin:2vw;display:block;font-weight:600">Press ENTER to continue</span>
+
         </div>
         
 
@@ -258,6 +175,8 @@
     <div id="menu_notif" style="margin:10px;display:none;" class="menu">
         <span style="color:white;font-size:6vh;margin:3vw;display:block;font-weight:600" id="notifContent">Signed Out</span>
     </div>
+
+    
     
     <script>
 
@@ -299,6 +218,13 @@
             purpose : undefined
         };
 
+
+        async function fetchAsync (url) {
+            let response = await fetch(url, {headers:{'lrAction' : "YESSSSSS"}});
+            let data = await response.json();
+            return data;
+          }
+
         document.getElementById('logscrolldown').addEventListener('click', function(){
             document.getElementById("alllogs").scrollBy(0,40);
         });
@@ -317,6 +243,54 @@
                 evt.srcElement.value = settings[setting]["options"][settings[setting]["value"]];
             });
         });
+
+        function showOverlay(content){
+            document.getElementById('overlayMessage').innerHTML = content;
+            document.getElementById('overlay').style.display = "inline";
+            setTimeout(function(){
+                document.getElementById("overlay").style.opacity = "1";
+                setTimeout(function(){
+                    document.getElementById("overlay").style.opacity = "0";
+                    setTimeout(function(){
+                        document.getElementById("overlay").style.display = "none";
+                    },500);
+                
+                },3000);
+            },30);
+        }
+
+        async function postData(url = '', data = {}) {
+            // Default options are marked with *
+            const response = await fetch(url, {
+              method: 'POST', // *GET, POST, PUT, DELETE, etc.
+              mode: 'cors', // no-cors, *cors, same-origin
+              cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+              credentials: 'same-origin', // include, *same-origin, omit
+              headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              redirect: 'follow', // manual, *follow, error
+              referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+              body: JSON.stringify(data) // body data type must match "Content-Type" header
+            });
+            return response.json(); // parses JSON response into native JavaScript objects
+          }
+
+        function submitData(bNum, rintBefore, socBefore, rintAfter, socAfter, purpose, group){
+            postData("/api/submitsign",{
+                bNum: bNum,
+                rintBefore: rintBefore,
+                socBefore: socBefore,
+                rintAfter: rintAfter,
+                socAfter: socAfter,
+                purpose: purpose,
+                group: group
+            
+            }).then(data => {
+                console.log(data);
+            });
+        }
 
         function showNotif(content){
             document.getElementById("notifContent").innerHTML = content;
@@ -357,28 +331,90 @@
        });
         var final = "";
 
+        function setStepContent(){
+            document.getElementById("resultIn").style.opacity = ".6";
+            document.getElementById("resultOut").style.opacity = ".6";
+            document.getElementById("resultIn").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
+            document.getElementById("resultOut").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
+            if(currentlyWorking["doing"] == "signin" && currentlyWorking["step"] > 3){
+                console.log(formData);
+                showNotif("Signed In");
+                var batCode = parseFloat(formData["batteryCode"].substring(0,2) + "." + formData["batteryCode"].substring(2));
+                submitData(batCode, null, null, parseFloat(formData["rint"]), parseInt(formData["soc"]), null, null);
+                
+            }else if(currentlyWorking["doing"] == "signout" && currentlyWorking["step"] > 5){
+                formData["subgroup"] = settings["mode"]["value"] == 0 ? null : settings["subgroup"]["options"][settings["subgroup"]["value"]];
+                formData["purpose"] = settings["mode"]["value"] == 0 ? settings["reason"]["options"][settings["reason"]["value"]] : null;
+
+                console.log(formData)
+                showNotif("Signed Out");
+                var batCode = parseFloat(formData["batteryCode"].substring(0,2) + "." + formData["batteryCode"].substring(2));
+                submitData(batCode, parseFloat(formData["rint"]), parseInt(formData["soc"]), null, null, formData["purpose"], formData["subgroup"]);
+            }
+            else if(currentlyWorking["doing"] == "signout" && currentlyWorking["step"] == 4){
+                document.getElementById("outA").style.display = "none";
+
+                if(settings["mode"]["value"] == 0){
+                    document.getElementById("groupOut").style.display = "none";
+                    document.getElementById("reasonOut").style.display = "inline";
+                }else{
+                    document.getElementById("groupOut").style.display = "inline";
+                    document.getElementById("reasonOut").style.display = "none";
+                }
+
+                document.getElementById("outB").style.display = "inline-block";
+            }
+        }
+
         Array.from(document.getElementsByClassName("nextstep")).forEach(function(element){
             element.addEventListener('click', function(evt){
                 
                 try{
                     if(document.getElementById(evt.srcElement.dataset.rest).style.display == "none"){
-                        console.log("WHAT")
+                        //console.log("WHAT")
                         return;
                     }
                 }catch(e){
 
                 }
+
+                
                 
                     var result = final;
+                    var valid = true;
                     final = "";
                     
 
                     if(currentlyWorking["step"] == 1){
                         formData["batteryCode"] = result;
+                        fetchAsync("/api/isBatteryOut/" + formData["batteryCode"]).then(function(data){
+                            console.log(data);
+                            if(currentlyWorking["doing"] == "signout" && data["signedOut"] == true){
+                                showOverlay("Battery is already signed out");
+                                currentlyWorking["step"] -= 1;
+                                setStepContent();
+
+                            }else if(currentlyWorking["doing"] == "signin" && data["signedOut"] == false){
+                                showOverlay("Battery is not signed out");
+                                currentlyWorking["step"] -= 1;
+                                setStepContent();
+                            }
+                        });
                     }else if(currentlyWorking["step"] == 2){
+                        if(settings["mode"]["value"] == 0 && result == ""){
+                            showOverlay("You must provide an RINT");
+                            currentlyWorking["step"] -= 1;
+                            setStepContent();
+                        }
                         formData["rint"] = "." + result;
+                        
                     }
                     else if(currentlyWorking["step"] == 3){
+                        if(settings["mode"]["value"] == 0 && result == ""){
+                            showOverlay("You must provide an SOC");
+                            currentlyWorking["step"] -= 1;
+                            setStepContent();
+                        }
                         formData["soc"] = result + "%";
                     }
                     
@@ -386,26 +422,8 @@
                     
 
                     currentlyWorking["step"] += 1;
-                    document.getElementById("resultIn").style.opacity = ".6";
-                    document.getElementById("resultOut").style.opacity = ".6";
-                    document.getElementById("resultIn").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
-                    document.getElementById("resultOut").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
-                    if(currentlyWorking["doing"] == "signin" && currentlyWorking["step"] > 3){
-                        console.log(formData);
-                        showNotif("Signed In");
-                        
-                    }else if(currentlyWorking["doing"] == "signout" && currentlyWorking["step"] > 5){
-                        formData["subgroup"] = settings["subgroup"]["options"][settings["subgroup"]["value"]];
-                        formData["purpose"] = settings["reason"]["options"][settings["reason"]["value"]];
-
-                        console.log(formData)
-                        showNotif("Signed Out");
-                    }
-                    else if(currentlyWorking["doing"] == "signout" && currentlyWorking["step"] == 4){
-                        document.getElementById("outA").style.display = "none";
-                        document.getElementById("outB").style.display = "inline-block";
-                    }
-                
+                    
+                    setStepContent();
                 
             });
         });
@@ -414,7 +432,7 @@
 
                 var toAdd = [];
                 if(currentlyWorking["step"] == 1){
-                    toAdd = ["#",""];
+                    toAdd = ["",""];
                 }else if(currentlyWorking["step"] == 2){
                     toAdd = [".",""]
                 }else if(currentlyWorking["step"] == 3){
@@ -424,16 +442,23 @@
                 if(document.getElementById("resultIn").innerHTML == (currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A")){
                     final = "";
                 }
-                if(final.length >= 6){
+                if(final.length >= 8){
                     final = "";
                 }
                 console.log(e.srcElement)
                 final += button.value;
 
                 document.getElementById("resultIn").style.opacity = "1";
-                document.getElementById("resultIn").innerHTML = toAdd[0] + final + toAdd[1];
+                if(currentlyWorking["step"] == 1){
+                    document.getElementById("resultIn").innerHTML = toAdd[0] + final.substring(0,2) +  "." + final.substring(2) + toAdd[1];
+                    document.getElementById("resultOut").innerHTML = toAdd[0] + final.substring(0,2) +  "." + final.substring(2) + toAdd[1];
+                }else{
+                    document.getElementById("resultIn").innerHTML = toAdd[0] + final + toAdd[1];
+                    document.getElementById("resultOut").innerHTML = toAdd[0] + final + toAdd[1];
+                }
+                
                 document.getElementById("resultOut").style.opacity = "1";
-                document.getElementById("resultOut").innerHTML = toAdd[0] + final + toAdd[1];
+                
             });
         });
 
@@ -475,7 +500,22 @@
             document.getElementById("resultIn").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
             document.getElementById("resultOut").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
         });
-
+        document.getElementById("clearOut2").addEventListener("click", function(){
+            document.getElementById("menu_"+menu).style.opacity = "0";
+                setTimeout(function(){
+                    document.getElementById("menu_"+menu).style.display = "none";
+                    menu = "main";
+                    document.getElementById("menu_"+menu).style.display = "inline-block";
+                    setTimeout(function(){
+                        document.getElementById("menu_"+menu).style.opacity = "1";
+                    },30);
+                },500);
+            final = "";
+            document.getElementById("resultIn").style.opacity = ".6";
+            document.getElementById("resultOut").style.opacity = ".6";
+            document.getElementById("resultIn").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
+            document.getElementById("resultOut").innerHTML = currentlyWorking["step"] < 4 ? enterText[currentlyWorking["step"]-1] : "N/A";
+        });
         
 
         Array.from(document.getElementsByClassName("menuchange")).forEach(function(button){
@@ -506,6 +546,55 @@
                 
             });
         });
+
+        setInterval(function(){
+            console.log('OKKKKK')
+            fetchAsync("/api/allsignedout", {lrAction : "YES"}).then(function(data){
+                var batteries = data;
+                document.getElementById("alllogs").innerHTML = "";
+                batteries.forEach(function(battery){
+                    try{
+                        var timeString = "---";
+                        var timeString2 = "---";
+                        if(battery.timeOut != undefined){
+                            var date = new Date(battery.timeOut);
+                            timeString = (date.getHours() > 12 ? date.getHours() - 12 : date.getHours()) + ":" + date.getMinutes().toString().padStart(2, "0") + ":" + date.getSeconds().toString().padStart(2, "0") + (date.getHours() >= 12 ? 'PM' : 'AM');
+                            
+                        }
+                        if(battery.timeIn != undefined){
+                            var date = new Date(battery.timeIn);
+                            timeString2 = (date.getHours() > 12 ? date.getHours() - 12 : date.getHours()) + ":" + date.getMinutes().toString().padStart(2, "0") + ":" + date.getSeconds().toString().padStart(2, "0") + (date.getHours() >= 12 ? 'PM' : 'AM');
+                            
+                        }
+                        
+                        document.getElementById("alllogs").innerHTML += `<div class="logitem" style="display:flex;justify-content:space-between">
+                            <span style="color:white;font-size:3vh;margin:3vw;display:inline-flex;">${battery.batteryNumber}</span>
+                            <div style="display:inline-flex;margin:3vw">
+                                <span style="color:white;font-size:2vh;display:block;">${timeString}</span>
+                           
+                            </div>
+                            <div style="display:inline-flex;margin:3vw">
+                                <span style="color:white;font-size:2vh;display:block;">${battery.beakBefore == undefined ? "---" : (battery.beakBefore.rint == undefined ? "---" : battery.beakBefore.rint) } / ${battery.beakBefore == undefined ? "---" : (battery.beakBefore.soc == undefined ? "---" : battery.beakBefore.soc)}%</span>
+                               
+                            </div>
+                            <div style="display:inline-flex;margin:3vw">
+                                <span style="color:white;font-size:2vh;display:block;">${timeString2}</span>
+                           
+                            </div>
+                            <div style="display:inline-flex;margin:3vw">
+                                <span style="color:white;font-size:2vh;display:block;">${battery.beakAfter == undefined ? "---" : (battery.beakAfter.rint == undefined ? "---" : battery.beakAfter.rint)} / ${battery.beakAfter == undefined ? "---" : (battery.beakAfter.soc == undefined ? "---" : battery.beakAfter.soc )}%</span>
+                               
+                            </div>
+                            
+                            <span style="color:white;font-size:2vh;margin:3vw;display:inline-flex;opacity:${battery.purpose == undefined ? 0.6 : 1}">${battery.purpose == undefined ? battery.subgroup : battery.purpose}</span>
+                        </div>`;
+                    }catch(e){
+                        console.log(e)
+                    }
+                    
+                });
+            }); 
+        }, 5000);
 
     </script>
 </body>
