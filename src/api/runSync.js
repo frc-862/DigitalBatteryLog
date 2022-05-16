@@ -1,6 +1,6 @@
 const checkDb = require('./syncData.js');
 const cron = require('node-cron');
-const dns = require('dns');
+const spawn = require("child_process").spawn;
 
 //function run by index.js for syncing database with google sheets
 async function runSync() {
@@ -27,13 +27,28 @@ async function runSync() {
 }
 //function that attempts to perform a DNS lookup on google.com. Determines if there is an internet connection. 
 async function checkInternet(cb) {
-    await dns.lookup('google.com',function(err) {
-        if (err && err.code == "ENOTFOUND") {
-            cb(false);
-        } else {
-            cb(true);
-        }
+    const process = spawn('py', ["./src/api/checkInternet.py"]);
+
+    process.stderr.on('data', (data) => {
+        cb(false);
+        process.on('close', (code) => {
+            console.log(`child process exited with code ${code}`);
+        });
     })
+    process.stdout.on('data', (data) => {
+        const str = String.fromCharCode.apply(null, data).replace(/\s/g, '');
+        if (str == 'False') {
+            return cb(false);
+        } else if (str == 'True') {
+            return cb(true)
+        } else {
+            console.log('There was an error when checking for an internet connection');
+        }
+        process.on('close', (code) => {
+            console.log(`child process exited with code ${code}`);
+        });
+    })
+    
 }
 
 module.exports = runSync;
