@@ -4,18 +4,21 @@ Log battery sign-outs with the battery number, time signed out/in, and battery s
 
 ## Hardware
 
-1. Raspberry Pi 2/3/4 with internet
-2. Adafruit PiTFT Hat w/ or w/out touch (resistive)
+1. [Raspberry Pi 2/3 with internet access](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/)
+2. [Sunfounder 7" touchscreen display](https://www.sunfounder.com/collections/touchscreens/products/7inch-ips-touchscreen)
 
 ### Node Dependencies
 
 * mongoose
 * node-cron
 * google-apis
+* dotenv
 
 ### Setup
 
-**Note**: These instructions are specifically for Raspbian 11 (bullseye). This setup was tested on a Raspberry Pi 3 B using a 2.4" TFT without touch.
+
+**Note**: These instructions are specifically for Ubuntu server 20.04.4LTS (64bit ARM64). For help on installing this operating system, please click [here](https://www.maketecheasier.com/install-ubuntu-on-raspberry-pi/).
+> Warning: You MUST install the 64 bit version (ARM64 architecture) of Ubuntu server.
 
 #### First clone the repository via HTTP
 
@@ -23,13 +26,13 @@ Log battery sign-outs with the battery number, time signed out/in, and battery s
 git clone https://github.com/Mikecerc/DigitalBatteryLog.git
 ```
 
-#### To install all dependencies and create all JSON files, run the following to run the install script and follow any prompts given
+#### To install all dependencies and create all configuration files, run the following to run the install script and follow any prompts given
 
 ```bash
 sudo bash ./install.sh
 ```
 
-### Next, you must create an app via Google Cloud Platform. Follow the steps below to successfully setup the application, Oauth2 and Google Sheets API
+### Next, you must create an app via Google Cloud Platform in order to use the Google Sheets API. Follow the steps below to successfully setup the application, Oauth2 and Google Sheets API
 
 1. Using internet explorer, navigate to the [Google Cloud Platform](https://console.cloud.google.com)
 2. agree to the terms of service and continue onto the master dashboard.
@@ -76,5 +79,5 @@ sudo bash ./install.sh
 22. In order to use the Google Sheets API, you need an access token. To generate an access token, run the following command in the main folder of the repository:
 
 ```bash
-node /src/tools/getNewToken.js
+node run getToken
 ```
