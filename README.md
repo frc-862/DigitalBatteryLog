@@ -51,6 +51,13 @@ chromium-browser --kiosk http://localhost:3000 --disable-infobars --start-maximi
     sudo apt-get install xserver-xorg x11-server-utils xinit
     sudo apt-get install -y chromium-browser
 ```
+6. create a .env file in the repository folder with the following content: 
+```
+syncInterval=[time in minutes that you want to scan db for updates]
+sheetURL=[full url of the google sheet you are updating]
+databaseAddress=mongodb://localhost:27017/batteryLogs
+scopes=[\"https://www.googleapis.com/auth/spreadsheets\"]
+```
 
 
 ### Next, you must create an app via Google Cloud Platform in order to use the Google Sheets API. Follow the steps below to successfully setup the application, Oauth2 and Google Sheets API
