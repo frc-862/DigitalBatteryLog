@@ -26,11 +26,32 @@ Log battery sign-outs with the battery number, time signed out/in, and battery s
 git clone https://github.com/Mikecerc/DigitalBatteryLog.git
 ```
 
-#### To install all dependencies and create all configuration files, run the following to run the install script and follow any prompts given
-
+#### An installer script is currently planned, however setup at this point is manual. The steps to installing all the software needed is as follows:
+1. Install all the node dependencies with the following command:
+    ```bash
+    npm i
+    ```
+2. follow the steps located [here](https://www.mongodb.com/docs/v4.4/tutorial/install-mongodb-on-ubuntu/) to install mongoDB version 4.4 for Ubuntu 20.04 LTS:
+3. Add the following to your `~/.bash_profile`(create one if it does not exist): 
 ```bash
-sudo bash ./install.sh
+source ~/.profile
+if [[ -z $DISPLAY ]] && [[ $(/dev/tty) = /dev/tty1 ]]; do
+cd DigitalBatteryLog/
+git pull
+node . &
+startx -- --nocursor
+fi
 ```
+4. Add the following to your `~/.xinitrc` (create one if it does not exist):
+```bash
+chromium-browser --kiosk http://localhost:3000 --disable-infobars --start-maximized --window-position=0,0 --window-size=480,640
+```
+5. Install Xorg and chromium with the following:
+```bash
+    sudo apt-get install xserver-xorg x11-server-utils xinit
+    sudo apt-get install -y chromium-browser
+```
+
 
 ### Next, you must create an app via Google Cloud Platform in order to use the Google Sheets API. Follow the steps below to successfully setup the application, Oauth2 and Google Sheets API
 
