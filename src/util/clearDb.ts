@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const readline = require('readline');
-const batteryDataModel = require("../schemas/batterySchema.js");
+import mongoose from 'mongoose';
+import readline from 'readline';
+import batteryDataModel from "../schemas/batterySchema.js";
 require('dotenv').config()
 
 try {

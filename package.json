@@ -2,12 +2,13 @@
   "name": "google-sheets-api",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/index.js",
+  "type": "module",
+  "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "manualCreate": "node ./src/tools/manualCreate.js",
-    "getToken": "node ./src/tools/getNewToken.js",
-    "clearDb": "node ./src/tools/clearDB.js"
+    "manualCreate": "node ./dist/util/manualCreate.js",
+    "getToken": "node ./dist/util/getNewToken.js",
+    "clearDb": "node ./dist/util/clearDB.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "dotenv": "^16.0.0",
     "googleapis": "^39.2.0",
     "mongoose": "^6.2.7",
-    "node-cron": "^3.0.0"
+    "node-cron": "^3.0.0",
+    "node-fetch": "^3.2.10"
   }
 }

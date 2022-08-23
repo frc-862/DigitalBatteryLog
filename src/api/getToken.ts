@@ -10,7 +10,7 @@ const CREDENTIALS_PATH = './config/auth/credentials.json'
 
 // This function is called in syncData.js when there is not a token.json file. 
 // If you ever change the scopes in googleAPIConstants.json, please run getNewToken.js (src/tools.getNewToken.js
-async function getNewToken() {
+export default async function getNewToken() {
     let credentials;
     //reads credentials file
     fs.readFile(CREDENTIALS_PATH, (err, content) => {
@@ -49,5 +49,3 @@ async function getNewToken() {
         });
     });
 }
-
-module.exports = getNewToken;

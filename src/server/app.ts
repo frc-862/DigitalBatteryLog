@@ -1,98 +1,90 @@
-const http = require('http')
-const fs = require('fs')
+import http from 'http';
+import fs from 'fs';
 // get functions to communicate to server
-const isSignedOut = require("../database/functions/isSignedOut.js");
-const submitData = require("../database/functions/submitDataByBatteryNumber.js");
-const getLogs = require("../database/functions/getLogs.js");
+import { db } from '../index.js'
 // run function app when ready
 async function app() {
   const server = http.createServer((req, res) => {
     // check if request is a GET request to get data or HTML
-    if(req.method == "GET"){
+    if (req.method == "GET") {
 
       // If the request is not going to the API, return the HTML file
-      if(req.url.includes("/api")){
+      if (req.url.includes("/api")) {
         // data needs to be gotten from api
 
         // all API data is JSON
         res.writeHead(200, { 'content-type': 'application/json' });
 
         // first condition checking if API is looking for battery being signed out
-        if(req.url.includes("isBatteryOut")){
-          
+        if (req.url.includes("isBatteryOut")) {
+
           // get the battery raw # and then turn it into a proper
           var batRaw = req.url.split("/")[req.url.split("/").length - 1];
-          if(batRaw.length != 4){
-            res.end(JSON.stringify({valid : false}));
+          if (batRaw.length != 4) {
+            res.end(JSON.stringify({ valid: false }));
           }
-          var batNum = batRaw.substring(0,2) + "." + batRaw.substring(2,4);
+          var batNum: string | number = batRaw.substring(0, 2) + "." + batRaw.substring(2, 4);
           batNum = parseFloat(batNum);
           // run the implemented function and handle the result back to the page
-          isSignedOut(batNum).then(function(data){
-            if(data){
-              res.end(JSON.stringify({valid : true, signedOut : data}));
-            }else{
-              res.end(JSON.stringify({valid : false, signedOut : false}));
+          db.isSignedOut(batNum).then(function (data: any) {
+            if (data) {
+              res.end(JSON.stringify({ valid: true, signedOut: data }));
+            } else {
+              res.end(JSON.stringify({ valid: false, signedOut: false }));
             }
           });
-        }else if(req.url.includes("/allsignedout")){
-          getLogs().then(function(data){
+        } else if (req.url.includes("/allsignedout")) {
+          db.getLogs().then(function (data: any) {
             //console.log(JSON.stringify(data));
             res.end(JSON.stringify(data));
           });
         }
-        
-        
-      }else{
+
+
+      } else {
 
         // if default path, set back to michael
-        if(req.url == "/"){
+        if (req.url == "/") {
           req.url = "/index.html";
         }
         // get static file from folder
-        fs.readFile("src" + req.url, function(err, data) {
+        fs.readFile("./app" + req.url, function (err, data) {
           // must specify diff. content type
           res.setHeader("Content-Type", "text/html");
           res.writeHead(200);
           res.end(data);
         });
-        
+
       }
-      
-    }else{
+
+    } else {
       // Otherwise, request must be a POST
       // all post data is JSON
       res.writeHead(200, { 'content-type': 'application/json' });
-      
+
       // checking if the request is to submit data
-      if(req.url.includes("/submitsign")){
+      if (req.url.includes("/submitsign")) {
         // needs to get chunks of data before ending the request
         const chunks = [];
         req.on('data', chunk => chunks.push(chunk));
         req.on('end', () => {
           // on end, parse the data
-          const data = JSON.parse(Buffer.concat(chunks));
+          const data = JSON.parse(Buffer.concat(chunks).toString());
           //console.log(data);
           // use implemented function to send the data
-          submitData(data["bNum"], data["rintBefore"], data["socBefore"], data["rintAfter"], data["socAfter"], data["purpose"], data["group"]).then(() => {
+          db.submitData({ bNum: data["bNum"], rintBefore: data["rintBefore"], socBefore: data["socBefore"], rintAfter: data["rintAfter"], socAfter: data["socAfter"], purpose: data["purpose"], subgroup: data["group"] }).then(() => {
             // once async function done, return a success
-            res.end(JSON.stringify({success : true}));
+            res.end(JSON.stringify({ success: true }));
           });
-          
+
         })
-      }else{
-        res.end(JSON.stringify({message : "Not Implemented"}));
+      } else {
+        res.end(JSON.stringify({ message: "Not Implemented" }));
       }
-      
     }
-    
-
-    
   })
-
-
   // available at localhost:3000
 
   server.listen(3000)
 }
-module.exports = app;
+export default app;

@@ -1,6 +1,6 @@
-const { Schema, model } = require('mongoose');
-
-batteryDataSchema = new Schema({
+import pkg from 'mongoose';
+const { Schema, model } = pkg
+const batteryDataSchema = new Schema({
     batteryNumber: Number,
     timeOut: String,
     beakBefore: {
@@ -18,7 +18,5 @@ batteryDataSchema = new Schema({
     row: Number,
     signedOut: Boolean,
 });
-
-const batteryDataModel = model('batteryData', batteryDataSchema, 'batteryDataLogs')
-
-module.exports = batteryDataModel; 
+const batteryDataModel = model('batteryData', batteryDataSchema, 'batteryDataLogs');
+export default batteryDataModel;
